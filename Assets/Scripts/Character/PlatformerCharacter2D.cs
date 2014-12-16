@@ -10,7 +10,7 @@ namespace UnitySampleAssets._2D
         [SerializeField] private LayerMask whatIsGround; //A mask determining what is ground to the character
 
         private Transform groundCheck; 
-        private float groundedRadius = 4f; 
+        private float groundedHeightTest = 4f; 
         private bool grounded = false; //Whether or not the player is grounded.
 
 		public float minTimeBetweenJumps = 0.25f;
@@ -26,7 +26,7 @@ namespace UnitySampleAssets._2D
         private void FixedUpdate()
         {
 			grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 16, groundCheck.position.y),
-			                                 new Vector2(groundCheck.position.x + 16, groundCheck.position.y - groundedRadius),
+			                                 new Vector2(groundCheck.position.x + 16, groundCheck.position.y - groundedHeightTest),
 			                                 whatIsGround);
 
 			timeSinceLastJump += Time.deltaTime;

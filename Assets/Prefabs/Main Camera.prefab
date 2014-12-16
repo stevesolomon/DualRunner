@@ -287,12 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e141c61db543b2a32b5c4dbed4d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piece: {fileID: 100040, guid: 61a2fcfdc67324fa18d0640b9cec087a, type: 2}
-  minTimeForSpawn: .5
-  maxTimeForSpawn: .800000012
-  minHeight: 0
-  maxHeight: 1
-  generated: 0
+  pieces:
+  - {fileID: 100040, guid: 61a2fcfdc67324fa18d0640b9cec087a, type: 2}
+  - {fileID: 100020, guid: 55ca759cdfbf44ac8bc29949a777706e, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece41e9c8e901414e9c7a573b4a73701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testForHero: 1
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece41e9c8e901414e9c7a573b4a73701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testForHero: 0
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
