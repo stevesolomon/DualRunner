@@ -3,9 +3,9 @@
 public class RunnerController : MonoBehaviour
 {
 	[SerializeField] private float maxSpeed = 10f; 
-	[SerializeField] private float jumpForce = 400f; //Amount of force added when the player jumps.	
-	[SerializeField] private float addedJumpForce = 10000f;
-	[SerializeField] private LayerMask whatIsGround; //A mask determining what is ground to the character
+	[SerializeField] private float jumpForce = 400f; 
+	[SerializeField] private float addedJumpForce = 80f;
+	[SerializeField] private LayerMask whatIsGround; //A mask determining what is ground to the runner
 
 	private Transform groundCheck; 
 	private float groundedHeightTest = 4f; 
@@ -15,9 +15,9 @@ public class RunnerController : MonoBehaviour
 	public float minTimeBetweenJumps = 0.25f;
 	public float maxJumpExtendTime = 1f;
 
-	private float timeSinceLastJump;
-	private float timeExtendingJump;
-	private bool canExtendJump;
+	private float timeSinceLastJump = 0.0f;
+	private float timeExtendingJump = 0.0f;
+	private bool canExtendJump = false;
 
 	private void Awake()
 	{
@@ -39,7 +39,7 @@ public class RunnerController : MonoBehaviour
 	{
 		bool canJump = false; 
 
-		rigidbody2D.velocity = new Vector2(move*maxSpeed, rigidbody2D.velocity.y);
+		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 
 		if (timeSinceLastJump > minTimeBetweenJumps && grounded) {
 			jumping = false;
@@ -55,10 +55,8 @@ public class RunnerController : MonoBehaviour
 			canExtendJump = true;
 			jumping = true;
 
-			return;
+			return; //We're done here
 	    }
-
-		Debug.Log("Jumping:" + jumping + " Jump Pressed: " + jumpPressed);
 
 		//If we are currently jumping we might be able to extend the jump if the jump button is still pressed!
 		//The following criteria have to be satisfied: 
@@ -72,7 +70,7 @@ public class RunnerController : MonoBehaviour
 			timeExtendingJump += Time.deltaTime;
 			var normalizedJumpForce = addedJumpForce * Mathf.Lerp(1, 0, timeExtendingJump / maxJumpExtendTime);
 			rigidbody2D.AddForce(new Vector2(0f, normalizedJumpForce));
-		} else {
+		} else { //We're not extending the jump, so block it from happening for the rest of this jump.
 			canExtendJump = false;
 		}
 	}
