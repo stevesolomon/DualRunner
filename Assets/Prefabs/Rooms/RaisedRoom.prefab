@@ -187,6 +187,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400020}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: RaisedRoom
   m_TagString: Untagged
@@ -1220,6 +1221,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelGenerator: {fileID: 11400000, guid: a3540244ccb184f50bd6949446baeb98, type: 2}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a146819587044ffb5851718067a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

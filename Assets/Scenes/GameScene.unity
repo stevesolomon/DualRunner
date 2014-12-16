@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e141c61db543b2a32b5c4dbed4d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieces:
+  rooms:
   - {fileID: 100040, guid: 61a2fcfdc67324fa18d0640b9cec087a, type: 2}
   - {fileID: 100020, guid: 55ca759cdfbf44ac8bc29949a777706e, type: 2}
 --- !u!1 &578690914
@@ -1006,6 +1006,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 11400000, guid: f7aaefdf2935d4f668270f8a7fc65857, type: 2}
+      propertyPath: rooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: f7aaefdf2935d4f668270f8a7fc65857, type: 2}
       propertyPath: pieces.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1051,6 +1055,14 @@ Prefab:
       objectReference: {fileID: 100040, guid: 61a2fcfdc67324fa18d0640b9cec087a, type: 2}
     - target: {fileID: 11400000, guid: f7aaefdf2935d4f668270f8a7fc65857, type: 2}
       propertyPath: pieces.Array.data[1]
+      value: 
+      objectReference: {fileID: 100020, guid: 55ca759cdfbf44ac8bc29949a777706e, type: 2}
+    - target: {fileID: 11400000, guid: f7aaefdf2935d4f668270f8a7fc65857, type: 2}
+      propertyPath: rooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 100040, guid: 61a2fcfdc67324fa18d0640b9cec087a, type: 2}
+    - target: {fileID: 11400000, guid: f7aaefdf2935d4f668270f8a7fc65857, type: 2}
+      propertyPath: rooms.Array.data[1]
       value: 
       objectReference: {fileID: 100020, guid: 55ca759cdfbf44ac8bc29949a777706e, type: 2}
     m_RemovedComponents: []
@@ -2038,6 +2050,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1172636646}
+  - 114: {fileID: 1172636647}
   m_Layer: 0
   m_Name: FlatRoom
   m_TagString: Untagged
@@ -2078,6 +2091,19 @@ Transform:
   - {fileID: 958384426}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1172636647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 61a2fcfdc67324fa18d0640b9cec087a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1926427595}
+  m_GameObject: {fileID: 1172636645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a146819587044ffb5851718067a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
 --- !u!1 &1204124971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,6 +3481,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1766212004}
+  - 114: {fileID: 1766212005}
   m_Layer: 0
   m_Name: FlatRoom
   m_TagString: Untagged
@@ -3495,6 +3522,19 @@ Transform:
   - {fileID: 1308503104}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1766212005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 61a2fcfdc67324fa18d0640b9cec087a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1329810368}
+  m_GameObject: {fileID: 1766212003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a146819587044ffb5851718067a98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
 --- !u!1 &1792028084
 GameObject:
   m_ObjectHideFlags: 0
