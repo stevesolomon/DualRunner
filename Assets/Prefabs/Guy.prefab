@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 140
+  m_GravityScale: 40
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -134,9 +134,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d7b34a3bb2d4e4b926e7e729d3d410, type: 3}
+  m_Script: {fileID: 11500000, guid: 12da20877408746178cb0aab2bb78276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 200
+  jumpForce: 8000
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  minTimeBetweenJumps: .25
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,15 +151,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
+  m_Script: {fileID: 11500000, guid: f857878896bdd48b7990b97aa0363210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 256
-  jumpForce: 25000
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 534
-  minTimeBetweenJumps: .100000001
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
