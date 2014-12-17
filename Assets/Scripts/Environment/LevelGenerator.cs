@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour {
 	
 	private Dictionary<int, List<GameObject>> difficultyMap;
 
-	private int maxDifficulty;
+	private int maxDifficulty = 0;
 
 	private RoomLoader roomLoader;
 	
@@ -23,6 +23,8 @@ public class LevelGenerator : MonoBehaviour {
 			var room = roomLoader.LoadRoom(asset.text);
 			var difficulty = room.GetComponent<RoomInfo>().difficulty;
 
+			maxDifficulty = difficulty > maxDifficulty ? difficulty : maxDifficulty;
+
 			if (!difficultyMap.ContainsKey(difficulty)) {
 				difficultyMap.Add(difficulty, new List<GameObject>(8));
 			}
@@ -32,7 +34,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 	
 	public void GenerateNextRoom() {
-		int difficultyIndex = Mathf.FloorToInt(Random.Range (0, maxDifficulty));
+		int difficultyIndex = Mathf.FloorToInt(Random.Range (0, maxDifficulty + 1));
 		int pieceIndex = Mathf.FloorToInt(Random.Range (0, difficultyMap[difficultyIndex].Count));
 
 		var newRoom = Instantiate (difficultyMap[difficultyIndex][pieceIndex], 

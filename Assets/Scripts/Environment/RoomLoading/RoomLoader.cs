@@ -32,7 +32,7 @@ public class RoomLoader {
 	}
 
 	private GameObject GenerateRoom(XmlNodeList roomTiles, int width, int height, int tileWidth, int tileHeight, int difficulty) {
-		int i = 0;
+		int i = -1;
 
 		var room = GameObject.Instantiate(Resources.Load("Rooms/BlankRoom")) as GameObject;
 		room.SetActive(false);
@@ -42,6 +42,8 @@ public class RoomLoader {
 
 		//Build up our prefabs one-by-one in the roomNode.
 		foreach (XmlNode node in roomTiles) {
+			i++;
+
 			var tileId = int.Parse(node.Attributes["gid"].InnerText);
 
 			if (tileId == 0) //empty tile
@@ -53,12 +55,10 @@ public class RoomLoader {
 
 			//Yank the tile info from the map and instantiate it!
 			var tileInfo = tileDictionary[tileId];
-			var position = new Vector3(i % width * tileWidth, i / width * tileHeight, 0f);
+			var position = new Vector3((i % width) * tileWidth, (height - (i / width) - 1) * tileHeight, 0f);
 
 			var gameObject = GameObject.Instantiate(Resources.Load(tileInfo.prefabName), position, Quaternion.identity) as GameObject;
 			gameObject.transform.SetParent(room.transform);
-
-			i++;
 		}
 
 		return room;
