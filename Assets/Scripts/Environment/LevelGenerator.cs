@@ -16,7 +16,7 @@ public class LevelGenerator : MonoBehaviour {
 	
 	void Awake() {
 		difficultyMap = new Dictionary<int, List<GameObject>>(8);
-		roomLoader = new RoomLoader();
+		roomLoader = new RoomLoader(Constants.PIXELS_PER_UNIT);
 		rooms = new List<GameObject>(roomDefinitions.Length);
 
 		foreach (var asset in roomDefinitions) {

@@ -4,7 +4,15 @@ using System.Xml;
 
 public class RoomLoader {
 
-	private Dictionary<int, TileInfo> tileDictionary = new Dictionary<int, TileInfo>(128);
+	private Dictionary<int, TileInfo> tileDictionary;
+
+	private float pixelsPerUnit;
+
+	public RoomLoader(float pixelsPerUnit) {
+		this.pixelsPerUnit = pixelsPerUnit;
+
+		tileDictionary = new Dictionary<int, TileInfo>(128);
+	}
 
 	public GameObject LoadRoom(string xmlText) {
 		tileDictionary.Clear();
@@ -55,7 +63,7 @@ public class RoomLoader {
 
 			//Yank the tile info from the map and instantiate it!
 			var tileInfo = tileDictionary[tileId];
-			var position = new Vector3((i % width) * tileWidth, (height - (i / width) - 1) * tileHeight, 0f);
+			var position = new Vector3((i % width) * (tileWidth / pixelsPerUnit), (height - (i / width) - 1) * (tileHeight / pixelsPerUnit), 0f);
 
 			var gameObject = GameObject.Instantiate(Resources.Load(tileInfo.prefabName), position, Quaternion.identity) as GameObject;
 			gameObject.transform.SetParent(room.transform);
