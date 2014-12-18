@@ -10,12 +10,13 @@ public class LevelGenerator : MonoBehaviour {
 	
 	private Dictionary<int, List<GameObject>> difficultyMap;
 
-	private int maxDifficulty = 0;
+	private List<int> difficulties;
 
 	private RoomLoader roomLoader;
 	
 	void Awake() {
-		difficultyMap = new Dictionary<int, List<GameObject>>(8);
+		difficultyMap = new Dictionary<int, List<GameObject>>(16);
+		difficulties = new List<int>(16);
 		roomLoader = new RoomLoader(Constants.PIXELS_PER_UNIT);
 		rooms = new List<GameObject>(roomDefinitions.Length);
 
@@ -23,21 +24,23 @@ public class LevelGenerator : MonoBehaviour {
 			var room = roomLoader.LoadRoom(asset.text);
 			var difficulty = room.GetComponent<RoomInfo>().difficulty;
 
-			maxDifficulty = difficulty > maxDifficulty ? difficulty : maxDifficulty;
-
 			if (!difficultyMap.ContainsKey(difficulty)) {
 				difficultyMap.Add(difficulty, new List<GameObject>(8));
+				difficulties.Add(difficulty);
 			}
 
 			difficultyMap[difficulty].Add(room);
 		}
+
+		difficulties.Sort(); //Sort the difficulties for ordered indexing later.
 	}
 	
 	public void GenerateNextRoom() {
-		int difficultyIndex = Mathf.FloorToInt(Random.Range (0, maxDifficulty + 1));
-		int pieceIndex = Mathf.FloorToInt(Random.Range (0, difficultyMap[difficultyIndex].Count));
+		int difficultyIndex = Mathf.FloorToInt(Random.Range (0, difficulties.Count));
+		int difficulty = difficulties[difficultyIndex];
+		int pieceIndex = Mathf.FloorToInt(Random.Range (0, difficultyMap[difficulty].Count));
 
-		var newRoom = Instantiate (difficultyMap[difficultyIndex][pieceIndex], 
+		var newRoom = Instantiate (difficultyMap[difficulty][pieceIndex], 
 		             			   new Vector3(this.transform.position.x, this.transform.position.y, 0f),
 		                           Quaternion.identity) as GameObject;
 

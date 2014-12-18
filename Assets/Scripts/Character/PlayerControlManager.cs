@@ -16,12 +16,19 @@ public class PlayerControlManager : MonoBehaviour
 	private void Update()
 	{
 		if (!jumpPressed) 
+		{
 			jumpPressed = Input.GetButtonDown("Jump");
+
+			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+				jumpPressed = true;
+			}
+		}
 
 		jumpExtending = Input.GetButton("Jump");
 
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-			jumpPressed = true;
+		if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary ||
+		    Input.GetTouch(0).phase == TouchPhase.Moved)) {
+			jumpExtending = true;
 		}
 	}
 
