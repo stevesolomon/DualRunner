@@ -4,6 +4,7 @@ using UnitySampleAssets.CrossPlatformInput;
 [RequireComponent(typeof(RunnerController))]
 public class PlayerControlManager : MonoBehaviour
 {
+	public string jumpInputName;
 	private RunnerController character;
 	private bool jumpPressed;
 	private bool jumpExtending;
@@ -17,7 +18,7 @@ public class PlayerControlManager : MonoBehaviour
 	{
 		if (!jumpPressed) 
 		{
-			jumpPressed = Input.GetButtonDown("Jump");
+			jumpPressed = Input.GetButtonDown(jumpInputName);
 
 			if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
 				jumpPressed = true;

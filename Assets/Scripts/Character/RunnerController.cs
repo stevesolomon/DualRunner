@@ -12,8 +12,8 @@ public class RunnerController : MonoBehaviour
 	private bool grounded = false; 
 	private bool jumping = false;
 
-	public float minTimeBetweenJumps = 0.25f;
-	public float maxJumpExtendTime = 1f;
+	public float minTimeBetweenJumps;
+	public float maxJumpExtendTime;
 
 	private float timeSinceLastJump = 0.0f;
 	private float timeExtendingJump = 0.0f;
