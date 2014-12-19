@@ -34,6 +34,12 @@ public class LevelGenerator : MonoBehaviour {
 
 		difficulties.Sort(); //Sort the difficulties for ordered indexing later.
 	}
+
+	void Start() {
+		var cameraFollow = transform.parent.GetComponent<CameraFollow>();
+		transform.position = new Vector3(transform.position.x - cameraFollow.xOffset,
+		                                 transform.position.y, 0f);
+	}
 	
 	public void GenerateNextRoom() {
 		int difficultyIndex = Mathf.FloorToInt(Random.Range (0, difficulties.Count));
