@@ -19,6 +19,8 @@ public class RunnerController : MonoBehaviour
 	private float timeExtendingJump = 0.0f;
 	private bool canExtendJump = false;
 
+	private bool hitWall = false;
+
 	private void Awake()
 	{
 	    groundCheck = transform.Find("GroundCheck");
@@ -32,11 +34,19 @@ public class RunnerController : MonoBehaviour
 		                                 whatIsGround);
 
 		timeSinceLastJump += Time.deltaTime;
+
+		//If we're jumping and hit a wall, reduce vertical velocity enough that we can 
+		//still *potentially* make it over the wall if we were close enough. Otherwise we'll just fall.
+		if (jumping && rigidbody2D.velocity.x < 0.001f && rigidbody2D.velocity.x >= 0) {
+			canExtendJump = false;
+			rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y * 0.25f);
+		}
 	}
 
 
 	public void Move(float move, bool jumpPressed, bool jumpExtending)
 	{
+
 		bool canJump = false; 
 
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
