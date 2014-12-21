@@ -50,6 +50,7 @@ public class LevelGenerator : MonoBehaviour {
 		             			   new Vector3(this.transform.position.x, this.transform.position.y, 0f),
 		                           Quaternion.identity) as GameObject;
 
+		newRoom.transform.FindChild("EnterRoomTrigger").GetComponent<EnterRoom>().levelGenerator = this;
 		newRoom.SetActive(true);
 	}
 }
