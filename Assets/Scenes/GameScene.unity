@@ -368,6 +368,10 @@ Prefab:
       propertyPath: jumpInputName
       value: BottomJump
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 1090b1e0896b34622a886090d5ace117, type: 2}
+      propertyPath: controllingCamera
+      value: 
+      objectReference: {fileID: 1825483794}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1090b1e0896b34622a886090d5ace117, type: 2}
   m_RootGameObject: {fileID: 2099219936}
@@ -1456,6 +1460,10 @@ Prefab:
       propertyPath: jumpInputName
       value: TopJump
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 1090b1e0896b34622a886090d5ace117, type: 2}
+      propertyPath: controllingCamera
+      value: 
+      objectReference: {fileID: 387971694}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1090b1e0896b34622a886090d5ace117, type: 2}
   m_RootGameObject: {fileID: 1968761457}
@@ -1820,7 +1828,7 @@ Transform:
   - {fileID: 361835832}
   - {fileID: 854826738}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!114 &387971693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7305,7 +7313,7 @@ Transform:
   - {fileID: 2099219938}
   - {fileID: 1968761458}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1225880124
 GameObject:
   m_ObjectHideFlags: 0
@@ -11881,6 +11889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpInputName: TopJump
+  controllingCamera: {fileID: 387971694}
 --- !u!61 &1968761461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12563,3 +12572,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpInputName: BottomJump
+  controllingCamera: {fileID: 1825483794}
