@@ -42,7 +42,9 @@ public class PlayerControlManager : MonoBehaviour
 
 	private bool CheckTouchExtendJump() {
 		for (var i = 0; i < Input.touchCount; i++) {
-			if ((Input.GetTouch(i).phase == TouchPhase.Stationary || Input.GetTouch(i).phase == TouchPhase.Moved) && 
+			if ((Input.GetTouch(i).phase == TouchPhase.Began || 
+			     Input.GetTouch(i).phase == TouchPhase.Stationary || 
+			     Input.GetTouch(i).phase == TouchPhase.Moved) && 
 			    controllingCamera.pixelRect.Contains(Input.GetTouch(i).position)) {
 				return true;
 			}

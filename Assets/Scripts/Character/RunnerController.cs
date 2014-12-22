@@ -46,14 +46,15 @@ public class RunnerController : MonoBehaviour
 
 	public void Move(float move, bool jumpPressed, bool jumpExtending)
 	{
-
 		bool canJump = false; 
 
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 
-		if (timeSinceLastJump > minTimeBetweenJumps && grounded) {
+		if (grounded) {
 			jumping = false;
-			canJump = true;
+
+			if (timeSinceLastJump > minTimeBetweenJumps)
+				canJump = true;
 		}
 
 		//First check if we are able to jump or not.
