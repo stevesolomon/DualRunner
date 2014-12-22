@@ -25,7 +25,7 @@ public class PlayerControlManager : MonoBehaviour
 			}
 		}
 
-		jumpExtending = Input.GetButton("Jump");
+		jumpExtending = Input.GetButton(jumpInputName);
 
 		if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary ||
 		    Input.GetTouch(0).phase == TouchPhase.Moved)) {
