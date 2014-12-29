@@ -8,7 +8,7 @@ public class RunnerController : MonoBehaviour
 	[SerializeField] private LayerMask whatIsGround; //A mask determining what is ground to the runner
 
 	private Transform groundCheck; 
-	private float groundedHeightTest = 4f; 
+	private float groundedHeightTest = 0.25f; 
 	private bool grounded = false; 
 	private bool jumping = false;
 
@@ -29,18 +29,13 @@ public class RunnerController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 16, groundCheck.position.y),
-		                                 new Vector2(groundCheck.position.x + 16, groundCheck.position.y - groundedHeightTest),
+		grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 0.5f, groundCheck.position.y),
+		                                 new Vector2(groundCheck.position.x + 0.5f, groundCheck.position.y - groundedHeightTest),
 		                                 whatIsGround);
 
-		timeSinceLastJump += Time.deltaTime;
+        Debug.Log(grounded);
 
-		//If we're jumping and hit a wall, reduce vertical velocity enough that we can 
-		//still *potentially* make it over the wall if we were close enough. Otherwise we'll just fall.
-		if (jumping && rigidbody2D.velocity.x < 0.001f && rigidbody2D.velocity.x >= 0) {
-			canExtendJump = false;
-			rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y * 0.25f);
-		}
+		timeSinceLastJump += Time.deltaTime;
 	}
 
 
@@ -59,6 +54,7 @@ public class RunnerController : MonoBehaviour
 
 		//First check if we are able to jump or not.
 	    if (canJump && jumpPressed) {
+            Debug.Log("Jump was pressed and we can jump!");
 	        grounded = false;
 	        rigidbody2D.AddForce(new Vector2(0f, jumpForce));
 			timeSinceLastJump = 0f;

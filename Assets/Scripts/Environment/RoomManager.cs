@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class RoomManager : MonoBehaviour {
 	
 	public TextAsset[] roomDefinitions;
+
+    public int pixelsPerUnit;
 	
 	private Dictionary<int, List<GameObject>> difficultyMap;
 	
@@ -15,7 +16,7 @@ public class RoomManager : MonoBehaviour {
 	void Start () {
 		difficultyMap = new Dictionary<int, List<GameObject>>(16);
 		Difficulties = new List<int>(16);
-		roomLoader = new RoomLoader(Constants.PIXELS_PER_UNIT);
+		roomLoader = new RoomLoader(pixelsPerUnit);
 		
 		foreach (var asset in roomDefinitions) {
 			var room = roomLoader.LoadRoom(asset.text);
