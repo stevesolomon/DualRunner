@@ -7,6 +7,11 @@ public class CameraFollow : MonoBehaviour {
 
 	public float xOffset = 5f;
 
+    void Start()
+    {
+        Screen.SetResolution(576, 800, false);
+    }
+
 	void Update () {
 		if (objectToFollow != null) {
 			this.transform.position = new Vector3(objectToFollow.transform.position.x + xOffset, 
