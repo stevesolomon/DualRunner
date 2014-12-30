@@ -3104,7 +3104,7 @@ GameObject:
   - 212: {fileID: 1611500644}
   - 50: {fileID: 1611500647}
   - 61: {fileID: 1611500646}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SmallFullHeightHazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
