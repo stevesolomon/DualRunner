@@ -999,6 +999,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1035,6 +1039,30 @@ Prefab:
       propertyPath: objectToFollow
       value: 
       objectReference: {fileID: 1155105773}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[1]
+      value: 
+      objectReference: {fileID: 4900000, guid: be21f3da7fc65f146b40c8f79536502c, type: 3}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[2]
+      value: 
+      objectReference: {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[3]
+      value: 
+      objectReference: {fileID: 4900000, guid: 91557215785fd3d469101506125bcc2f, type: 3}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[4]
+      value: 
+      objectReference: {fileID: 4900000, guid: a8cf4b8eaf656fa49814dcd13a53fadb, type: 3}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[5]
+      value: 
+      objectReference: {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[6]
+      value: 
+      objectReference: {fileID: 4900000, guid: 2e26d4f9685a6374a9bc1dac9b0a6385, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
   m_RootGameObject: {fileID: 554228658}
@@ -2052,6 +2080,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomDefinitions:
   - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
+  - {fileID: 4900000, guid: be21f3da7fc65f146b40c8f79536502c, type: 3}
+  - {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
+  - {fileID: 4900000, guid: 91557215785fd3d469101506125bcc2f, type: 3}
+  - {fileID: 4900000, guid: a8cf4b8eaf656fa49814dcd13a53fadb, type: 3}
+  - {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
+  - {fileID: 4900000, guid: 2e26d4f9685a6374a9bc1dac9b0a6385, type: 3}
   pixelsPerUnit: 32
 --- !u!4 &1041137581
 Transform:
