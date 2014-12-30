@@ -3,14 +3,7 @@
  <properties>
   <property name="difficulty" value="0"/>
  </properties>
- <tileset firstgid="1" name="Main" tilewidth="32" tileheight="32">
-  <image source="../Sprites/MapSpriteSheet.png" trans="ff00ff" width="128" height="128"/>
-  <tile id="0">
-   <properties>
-    <property name="prefab" value="ground"/>
-   </properties>
-  </tile>
- </tileset>
+ <tileset firstgid="1" source="Tilesets/Main.tsx"/>
  <layer name="Tile Layer 1" width="12" height="8">
   <data>
    <tile gid="0"/>
@@ -82,7 +75,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="8"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -92,9 +84,10 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1"/>
