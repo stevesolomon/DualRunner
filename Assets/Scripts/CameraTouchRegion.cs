@@ -10,8 +10,8 @@ public class CameraTouchRegion : MonoBehaviour
     public int order;
     public int totalRegions;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
     {
         if (camera == null)
         {
@@ -26,5 +26,5 @@ public class CameraTouchRegion : MonoBehaviour
         var myY = fullRect.y + (myHeight * order);
 
         TouchRect = new Rect(myX, myY, myWidth, myHeight);
-	}
+    }
 }
