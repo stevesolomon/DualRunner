@@ -8,7 +8,7 @@ public class RunnerController : MonoBehaviour
 	[SerializeField] private LayerMask whatIsGround; //A mask determining what is ground to the runner
 
 	private Transform groundCheck; 
-	private float groundedHeightTest = 0.25f; 
+	public float groundedHeightTest = 0.08f; 
 	private bool grounded = false; 
 	private bool jumping = false;
 
@@ -33,19 +33,18 @@ public class RunnerController : MonoBehaviour
 		                                 new Vector2(groundCheck.position.x + 0.5f, groundCheck.position.y - groundedHeightTest),
 		                                 whatIsGround);
 
-        Debug.Log(grounded);
-
 		timeSinceLastJump += Time.deltaTime;
 	}
 
 
 	public void Move(float move, bool jumpPressed, bool jumpExtending)
 	{
-		bool canJump = false; 
+		var canJump = false; 
 
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 
-		if (grounded) {
+		if (grounded) 
+        {
 			jumping = false;
 
 			if (timeSinceLastJump > minTimeBetweenJumps)
@@ -53,8 +52,8 @@ public class RunnerController : MonoBehaviour
 		}
 
 		//First check if we are able to jump or not.
-	    if (canJump && jumpPressed) {
-            Debug.Log("Jump was pressed and we can jump!");
+	    if (canJump && jumpPressed) 
+        {
 	        grounded = false;
 	        rigidbody2D.AddForce(new Vector2(0f, jumpForce));
 			timeSinceLastJump = 0f;
@@ -73,11 +72,14 @@ public class RunnerController : MonoBehaviour
 		// (4) We have not been extending the jump for too long
 		// (5) We are not moving downwards (more of a sanity check than anything)
 		if (jumping && jumpExtending && canExtendJump && 
-		    timeExtendingJump < maxJumpExtendTime && rigidbody2D.velocity.y > 0f) {
+		    timeExtendingJump < maxJumpExtendTime && rigidbody2D.velocity.y > 0f) 
+        {
 			timeExtendingJump += Time.deltaTime;
 			var normalizedJumpForce = addedJumpForce * Mathf.Lerp(1, 0, timeExtendingJump / maxJumpExtendTime);
 			rigidbody2D.AddForce(new Vector2(0f, normalizedJumpForce));
-		} else { //We're not extending the jump, so block it from happening for the rest of this jump.
+		}
+        else  //We're not extending the jump, so block it from happening for the rest of this jump.
+        {
 			canExtendJump = false;
 		}
 	}
