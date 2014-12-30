@@ -5,7 +5,7 @@ using UnitySampleAssets.CrossPlatformInput;
 public class PlayerControlManager : MonoBehaviour
 {
 	public string jumpInputName;
-	public Camera controllingCamera;
+	public CameraTouchRegion cameraTouchRegion;
 
 	private RunnerController character;
 	private bool jumpPressed;
@@ -14,6 +14,7 @@ public class PlayerControlManager : MonoBehaviour
 	private void Awake()
 	{
 	    character = GetComponent<RunnerController>();
+        cameraTouchRegion = GetComponent<CameraTouchRegion>();
 	}
 
 	private void Update()
@@ -31,8 +32,9 @@ public class PlayerControlManager : MonoBehaviour
 	//Check all the touches and grab the first one beginning in the range of this camera.
 	private bool CheckTouchJump() {
 		for (var i = 0; i < Input.touchCount; i++) {
-			if (Input.GetTouch(i).phase == TouchPhase.Began &&
-			    controllingCamera.pixelRect.Contains(Input.GetTouch(i).position)) {
+            var touch = Input.GetTouch(i);
+            var realPosition = new Vector2(touch.position.x, Screen.height - touch.position.y);
+			if (touch.phase == TouchPhase.Began && cameraTouchRegion.TouchRect.Contains(realPosition)) {
 				return true;
 			}
 		}
@@ -42,10 +44,12 @@ public class PlayerControlManager : MonoBehaviour
 
 	private bool CheckTouchExtendJump() {
 		for (var i = 0; i < Input.touchCount; i++) {
-			if ((Input.GetTouch(i).phase == TouchPhase.Began || 
-			     Input.GetTouch(i).phase == TouchPhase.Stationary || 
-			     Input.GetTouch(i).phase == TouchPhase.Moved) && 
-			    controllingCamera.pixelRect.Contains(Input.GetTouch(i).position)) {
+            var touch = Input.GetTouch(i);
+            var realPosition = new Vector2(touch.position.x, Screen.height - touch.position.y);
+            if ((touch.phase == TouchPhase.Began ||
+                 touch.phase == TouchPhase.Stationary ||
+                 touch.phase == TouchPhase.Moved) && 
+			    cameraTouchRegion.TouchRect.Contains(realPosition)) {
 				return true;
 			}
 		}

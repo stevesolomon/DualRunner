@@ -2193,6 +2193,7 @@ GameObject:
   - 61: {fileID: 1155105777}
   - 114: {fileID: 1155105776}
   - 114: {fileID: 1155105775}
+  - 114: {fileID: 1155105780}
   m_Layer: 11
   m_Name: BottomGuy
   m_TagString: Player
@@ -2207,7 +2208,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1155105773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -2.29530001, z: 0}
+  m_LocalPosition: {x: -6, y: -6.38430023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1830937410}
@@ -2247,7 +2248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpInputName: BottomJump
-  controllingCamera: {fileID: 0}
+  cameraTouchRegion: {fileID: 0}
 --- !u!61 &1155105777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2299,6 +2300,20 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: de605c5133b624eebb336b49593c5912, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1155105780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1155105773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0087b153db2c8374eb152958be70f04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 554228661}
+  order: 1
+  totalRegions: 2
 --- !u!1 &1182002674
 GameObject:
   m_ObjectHideFlags: 0
