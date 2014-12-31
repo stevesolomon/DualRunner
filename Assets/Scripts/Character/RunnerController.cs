@@ -19,6 +19,8 @@ public class RunnerController : MonoBehaviour
     private float timeExtendingJump = 0.0f;
     private bool canExtendJump = false;
 
+    private float timeUntilGroundTest = 0.0f;
+
     private void Awake()
     {
         groundCheck = transform.Find("GroundCheck");
@@ -27,10 +29,16 @@ public class RunnerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 0.5f, groundCheck.position.y),
-                                         new Vector2(groundCheck.position.x + 0.5f, groundCheck.position.y - groundedHeightTest),
-                                         whatIsGround);
+        grounded = false;
+        timeUntilGroundTest -= Time.deltaTime;
 
+        if (timeUntilGroundTest <= 0f)
+        {
+            grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 0.5f, groundCheck.position.y),
+                                             new Vector2(groundCheck.position.x + 0.5f, groundCheck.position.y - groundedHeightTest),
+                                             whatIsGround);
+        }
+        
         timeSinceLastJump += Time.deltaTime;
     }
 
@@ -40,8 +48,6 @@ public class RunnerController : MonoBehaviour
         var canJump = false; 
 
         rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-
-        Debug.Log(rigidbody2D.velocity);
 
         if (grounded) 
         {
@@ -60,10 +66,11 @@ public class RunnerController : MonoBehaviour
             timeExtendingJump = 0f;
             canExtendJump = true;
             jumping = true;
+            timeUntilGroundTest = 0.1f;
 
             return; //We're done here
         }
-
+        
         //If we are currently jumping we might be able to extend the jump if the jump button is still pressed!
         //The following criteria have to be satisfied: 
         // (1) We are currently jumping.

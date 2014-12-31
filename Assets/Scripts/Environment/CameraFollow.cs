@@ -20,9 +20,9 @@ public class CameraFollow : MonoBehaviour {
 	    var newPos = new Vector3(objectToFollow.transform.position.x + xOffset,
 	                             this.transform.position.y,
 	                             this.transform.position.z);
-        var roundPos = new Vector3(RoundToNearestPixel(newPos.x, myCamera), RoundToNearestPixel(newPos.y, myCamera), newPos.z);
+        //var roundPos = new Vector3(RoundToNearestPixel(newPos.x, myCamera), RoundToNearestPixel(newPos.y, myCamera), newPos.z);
 
-	    transform.position = roundPos;  
+	    transform.position = newPos;  
 	}
 
     private float RoundToNearestPixel(float unityUnits, Camera viewingCamera)
