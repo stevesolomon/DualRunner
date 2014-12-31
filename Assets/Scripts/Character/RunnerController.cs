@@ -19,8 +19,6 @@ public class RunnerController : MonoBehaviour
     private float timeExtendingJump = 0.0f;
     private bool canExtendJump = false;
 
-    private bool hitWall = false;
-
     private void Awake()
     {
         groundCheck = transform.Find("GroundCheck");
@@ -42,6 +40,8 @@ public class RunnerController : MonoBehaviour
         var canJump = false; 
 
         rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+
+        Debug.Log(rigidbody2D.velocity);
 
         if (grounded) 
         {

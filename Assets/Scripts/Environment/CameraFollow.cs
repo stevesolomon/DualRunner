@@ -7,11 +7,11 @@ public class CameraFollow : MonoBehaviour {
 
 	public float xOffset = 5f;
 
-    private Camera camera;
+    private Camera myCamera;
 
     void Start()
     {
-        camera = this.GetComponent<Camera>();
+        myCamera = this.GetComponent<Camera>();
     }
 
 	void Update () {
@@ -20,9 +20,9 @@ public class CameraFollow : MonoBehaviour {
 	    var newPos = new Vector3(objectToFollow.transform.position.x + xOffset,
 	                             this.transform.position.y,
 	                             this.transform.position.z);
-	   // var roundPos = new Vector3(RoundToNearestPixel(newPos.x, camera), RoundToNearestPixel(newPos.y, camera), newPos.z);
+        var roundPos = new Vector3(RoundToNearestPixel(newPos.x, myCamera), RoundToNearestPixel(newPos.y, myCamera), newPos.z);
 
-	    transform.position = newPos;  
+	    transform.position = roundPos;  
 	}
 
     private float RoundToNearestPixel(float unityUnits, Camera viewingCamera)

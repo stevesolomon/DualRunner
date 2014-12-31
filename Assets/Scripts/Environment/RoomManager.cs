@@ -13,7 +13,7 @@ public class RoomManager : MonoBehaviour {
 	
 	private RoomLoader roomLoader;
 
-	void Start () {
+	void Awake () {
 		difficultyMap = new Dictionary<int, List<GameObject>>(16);
 		Difficulties = new List<int>(16);
 		roomLoader = new RoomLoader(pixelsPerUnit);
