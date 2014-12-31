@@ -294,7 +294,7 @@ MonoBehaviour:
   roomManager: {fileID: 1041137580}
   currentDifficulty: 1
   currRoom: -1
-  roomLength: 12
+  roomLength: 16
   roomYPosition: -7
   initialXPosition: 0
 --- !u!4 &606722854
@@ -677,13 +677,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomDefinitions:
   - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
+  - {fileID: 4900000, guid: 2e26d4f9685a6374a9bc1dac9b0a6385, type: 3}
+  - {fileID: 4900000, guid: be21f3da7fc65f146b40c8f79536502c, type: 3}
+  - {fileID: 4900000, guid: 91557215785fd3d469101506125bcc2f, type: 3}
+  - {fileID: 4900000, guid: a8cf4b8eaf656fa49814dcd13a53fadb, type: 3}
+  - {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
+  - {fileID: 4900000, guid: 71747c5e0dc4c584b8caffe35a5e2510, type: 3}
+  - {fileID: 4900000, guid: 18f5ff9b05b92ba41aa91e5f1231fa32, type: 3}
   pixelsPerUnit: 32
 --- !u!4 &1041137581
 Transform:
@@ -944,7 +944,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1346477041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalPosition: {x: -32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 16, z: 1}
   m_Children: []
   m_Father: {fileID: 554228659}
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   roomManager: {fileID: 1041137580}
   currentDifficulty: 1
   currRoom: -1
-  roomLength: 12
+  roomLength: 16
   roomYPosition: 1
   initialXPosition: 0
 --- !u!1 &1821160702
