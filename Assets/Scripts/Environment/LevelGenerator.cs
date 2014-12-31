@@ -6,6 +6,8 @@ public class LevelGenerator : MonoBehaviour {
 	
 	public RoomManager roomManager;
 
+    public int currentDifficulty = 1;
+
 	void Start() {
 		var cameraFollow = transform.parent.GetComponent<CameraFollow>();
 		transform.position = new Vector3(transform.position.x - cameraFollow.xOffset,

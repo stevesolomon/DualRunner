@@ -32,9 +32,10 @@ public class RoomLoader {
 			firstGid = int.Parse(tilesetNode.Attributes["firstgid"].InnerText),
 			difficulty = int.Parse(mapNode.SelectSingleNode("properties/property[@name='difficulty']").Attributes["value"].InnerText);
 
-        string tilesetFilename = tilesetNode.Attributes["source"].InnerText.Replace("tsx", "xml");
+        string tilesetFilename = "RoomDefinitions/" + tilesetNode.Attributes["source"].InnerText.Replace(".tsx", "");
+        var textAsset = Resources.Load(tilesetFilename, typeof(TextAsset)) as TextAsset;
         var tilesetDoc = new XmlDocument();
-        tilesetDoc.Load("Assets/RoomDefinitions/" + tilesetFilename);
+        tilesetDoc.LoadXml(textAsset.text);
 
         BuildTileInfo(tilesetDoc.SelectSingleNode("tileset").SelectNodes("tile"), firstGid);
 

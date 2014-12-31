@@ -1001,7 +1001,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
       propertyPath: roomDefinitions.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1063,6 +1063,10 @@ Prefab:
       propertyPath: roomDefinitions.Array.data[6]
       value: 
       objectReference: {fileID: 4900000, guid: 2e26d4f9685a6374a9bc1dac9b0a6385, type: 3}
+    - target: {fileID: 11400006, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
+      propertyPath: roomDefinitions.Array.data[7]
+      value: 
+      objectReference: {fileID: 4900000, guid: 71747c5e0dc4c584b8caffe35a5e2510, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51eb423657befbb458c77f62166ca0c8, type: 2}
   m_RootGameObject: {fileID: 554228658}
@@ -1446,6 +1450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomManager: {fileID: 1041137580}
+  currentDifficulty: 1
 --- !u!23 &606722852
 Renderer:
   m_ObjectHideFlags: 0
@@ -2134,6 +2139,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: a8cf4b8eaf656fa49814dcd13a53fadb, type: 3}
   - {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
   - {fileID: 4900000, guid: 2e26d4f9685a6374a9bc1dac9b0a6385, type: 3}
+  - {fileID: 4900000, guid: 71747c5e0dc4c584b8caffe35a5e2510, type: 3}
   pixelsPerUnit: 32
 --- !u!4 &1041137581
 Transform:
