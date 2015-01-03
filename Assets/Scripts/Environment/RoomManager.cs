@@ -10,6 +10,8 @@ public class RoomManager : MonoBehaviour {
 	private Dictionary<int, List<GameObject>> difficultyMap;
 	
 	public List<int> Difficulties { get; protected set; }
+
+    public GameManagement gameManagement;
 	
 	private RoomLoader roomLoader;
 
@@ -17,22 +19,24 @@ public class RoomManager : MonoBehaviour {
 		difficultyMap = new Dictionary<int, List<GameObject>>(16);
 		Difficulties = new List<int>(16);
 		roomLoader = new RoomLoader(pixelsPerUnit);
-		
-		foreach (var asset in roomDefinitions) {
-			var room = roomLoader.LoadRoom(asset.text);
-			var difficulty = room.GetComponent<RoomInfo>().difficulty;
-			
-			if (!difficultyMap.ContainsKey(difficulty)) {
-				difficultyMap.Add(difficulty, new List<GameObject>(8));
-				Difficulties.Add(difficulty);
-			}
-			
-			difficultyMap[difficulty].Add(room);
-		}
-		
-		Difficulties.Sort(); //Sort the difficulties for ordered indexing later.
-	}
 
+        foreach (var asset in roomDefinitions)
+        {
+            var room = roomLoader.LoadRoom(asset.text, gameManagement);
+            var difficulty = room.GetComponent<RoomInfo>().difficulty;
+
+            if (!difficultyMap.ContainsKey(difficulty))
+            {
+                difficultyMap.Add(difficulty, new List<GameObject>(8));
+                Difficulties.Add(difficulty);
+            }
+
+            difficultyMap[difficulty].Add(room);
+        }
+
+        Difficulties.Sort(); //Sort the difficulties for ordered indexing later.
+	}
+    
 	public GameObject GetRandomRoom() {
 		int difficultyIndex = Mathf.FloorToInt(Random.Range (0, Difficulties.Count));
 		int difficulty = Difficulties[difficultyIndex];

@@ -14,7 +14,7 @@ public class RoomLoader {
 		tileDictionary = new Dictionary<int, TileInfo>(128);
 	}
 
-	public GameObject LoadRoom(string xmlText) {
+	public GameObject LoadRoom(string xmlText, GameManagement gameManagement) {
 		tileDictionary.Clear();
 
 		var xmlDoc = new XmlDocument();
@@ -39,12 +39,12 @@ public class RoomLoader {
 
         BuildTileInfo(tilesetDoc.SelectSingleNode("tileset").SelectNodes("tile"), firstGid);
 
-		var room = GenerateRoom(roomNode, width, height, tileWidth, tileHeight, difficulty);
+		var room = GenerateRoom(roomNode, width, height, tileWidth, tileHeight, difficulty, gameManagement);
 
 		return room;
 	}
 
-	private GameObject GenerateRoom(XmlNodeList roomTiles, int width, int height, int tileWidth, int tileHeight, int difficulty) {
+	private GameObject GenerateRoom(XmlNodeList roomTiles, int width, int height, int tileWidth, int tileHeight, int difficulty, GameManagement gameManagement) {
 		int i = -1;
 
 		var room = GameObject.Instantiate(Resources.Load("Rooms/BlankRoom")) as GameObject;
@@ -72,6 +72,13 @@ public class RoomLoader {
 
 			var gameObject = GameObject.Instantiate(Resources.Load(tileInfo.prefabName), position, Quaternion.identity) as GameObject;
 			gameObject.transform.SetParent(room.transform);
+
+            var hazardComponent = gameObject.GetComponent<Hazard>();
+
+            if (hazardComponent != null)
+            {
+                hazardComponent.gameManagement = gameManagement;
+            }
 		}
 
 		return room;
