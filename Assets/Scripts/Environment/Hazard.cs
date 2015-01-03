@@ -7,7 +7,8 @@ public class Hazard : MonoBehaviour {
 
 		//TODO: Clean this up - this component should only be responsible for signaling this event :)
 		if (collider.gameObject.CompareTag("Player")) {
-			Application.LoadLevel(Application.loadedLevel);
+			//Application.LoadLevel(Application.loadedLevel);
+            collider.gameObject.BroadcastMessage("HitHazard");
 		}
 	}
 }
