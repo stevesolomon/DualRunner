@@ -9,6 +9,8 @@ public class GameManagement : MonoBehaviour {
 
     public ParticleSystem deathParticles;
 
+    public ScoreKeeper scoreKeeper;
+
 	// Use this for initialization
 	void Start () {
         players = GameObject.FindGameObjectsWithTag(playerGameObjectTag);
@@ -16,6 +18,11 @@ public class GameManagement : MonoBehaviour {
         if (deathParticles == null) 
         {
             deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
+        }
+
+        if (scoreKeeper == null)
+        {
+            scoreKeeper = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeper>();
         }
 	}
 
@@ -35,6 +42,8 @@ public class GameManagement : MonoBehaviour {
         playerThatHit.renderer.enabled = false;
         deathParticles.transform.position = playerThatHit.transform.position;
         deathParticles.Play();
+
+        scoreKeeper.Pause();
 
         yield return new WaitForSeconds(2.5f);
         Application.LoadLevel(Application.loadedLevel);
