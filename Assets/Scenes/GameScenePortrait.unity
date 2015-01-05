@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGameObjectTag: Player
   deathParticles: {fileID: 63692678}
+  scoreKeeper: {fileID: 0}
 --- !u!1 &283527835
 GameObject:
   m_ObjectHideFlags: 0
