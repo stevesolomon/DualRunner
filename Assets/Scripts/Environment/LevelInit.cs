@@ -12,9 +12,4 @@ public class LevelInit : MonoBehaviour {
             levelGenerator.GenerateStartingRooms();
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

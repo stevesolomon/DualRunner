@@ -15,7 +15,7 @@ public class CameraTouchRegion : MonoBehaviour
     {
         if (camera == null)
         {
-            camera = Camera.mainCamera;
+            camera = Camera.main;
         }
 
         var fullRect = new Rect(0, 0, Screen.width, Screen.height);
