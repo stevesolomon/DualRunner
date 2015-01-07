@@ -2015,8 +2015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelGenerators:
-  - {fileID: 606722851}
   - {fileID: 1557672078}
+  - {fileID: 606722851}
 --- !u!4 &797929494
 Transform:
   m_ObjectHideFlags: 0

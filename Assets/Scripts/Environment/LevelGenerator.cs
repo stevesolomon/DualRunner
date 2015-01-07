@@ -21,15 +21,18 @@ public class LevelGenerator : MonoBehaviour {
 
     public GameObject[] basicBlockPrefabs;
 
-	void Start() {
+	void Awake() {
+        nextBlockPositionX = initialXPosition;
+        nextBlockPositionY = roomYPosition;
+	}
+
+    void Start()
+    {
         if (roomManager == null)
         {
             roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
         }
-
-        nextBlockPositionX = initialXPosition;
-        nextBlockPositionY = roomYPosition;
-	}
+    }
 	
 	public void GenerateNextRoom() {        
         var roomRef = roomManager.GetRandomRoom();
