@@ -99,6 +99,7 @@ public class LevelGenerator : MonoBehaviour {
 
         InstantiateNewRoom(roomRef, false);
         InstantiateNewRoom(roomRef, false);
+        InstantiateNewRoom(roomRef, false);
     }
 
     private Vector3 GetNextRoomPosition()
