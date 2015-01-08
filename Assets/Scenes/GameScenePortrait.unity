@@ -2059,14 +2059,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomDefinitions:
-  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
   - {fileID: 4900000, guid: 2e26d4f9685a6374a9bc1dac9b0a6385, type: 3}
+  - {fileID: 4900000, guid: c67ac53354121c042ad55d14a6380c38, type: 3}
+  - {fileID: 4900000, guid: 71747c5e0dc4c584b8caffe35a5e2510, type: 3}
+  - {fileID: 4900000, guid: 18f5ff9b05b92ba41aa91e5f1231fa32, type: 3}
+  - {fileID: 4900000, guid: e46af234ba03545489f4b3b01aea0cad, type: 3}
+  - {fileID: 4900000, guid: a5680b462f99d3145a77d3324f7f0cd7, type: 3}
+  - {fileID: 4900000, guid: 752d9cd6b330f504790ea4bb34d40e20, type: 3}
+  - {fileID: 4900000, guid: 34656765f31bd8449abd227f9123e8cd, type: 3}
+  - {fileID: 4900000, guid: 8493e4f341dbd3141bcf203b253d3b3b, type: 3}
   - {fileID: 4900000, guid: be21f3da7fc65f146b40c8f79536502c, type: 3}
   - {fileID: 4900000, guid: 91557215785fd3d469101506125bcc2f, type: 3}
   - {fileID: 4900000, guid: a8cf4b8eaf656fa49814dcd13a53fadb, type: 3}
   - {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
-  - {fileID: 4900000, guid: 71747c5e0dc4c584b8caffe35a5e2510, type: 3}
-  - {fileID: 4900000, guid: 18f5ff9b05b92ba41aa91e5f1231fa32, type: 3}
+  - {fileID: 4900000, guid: 7f072417e246d564da5213dcfb600cd5, type: 3}
   pixelsPerUnit: 32
   gameManagement: {fileID: 173605323}
 --- !u!4 &1041137581
