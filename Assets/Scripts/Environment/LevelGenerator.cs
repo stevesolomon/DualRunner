@@ -88,8 +88,6 @@ public class LevelGenerator : MonoBehaviour {
 
         var selectedDifficulty = UnityEngine.Random.Range(difficultyMin, difficultyMax);
 
-        Debug.Log("Selected Difficulty is: " + selectedDifficulty);
-
         return selectedDifficulty;
     }
 
