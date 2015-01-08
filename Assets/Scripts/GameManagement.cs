@@ -11,6 +11,8 @@ public class GameManagement : MonoBehaviour {
 
     public ScoreKeeper scoreKeeper;
 
+    private bool playerAlreadyHitHazard;
+
 	// Use this for initialization
 	void Start () {
         players = GameObject.FindGameObjectsWithTag(playerGameObjectTag);
@@ -24,13 +26,19 @@ public class GameManagement : MonoBehaviour {
         {
             scoreKeeper = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeper>();
         }
+
+        playerAlreadyHitHazard = false;
 	}
 
     public void PlayerHitHazard(GameObject playerThatHit)
     {
+        if (playerAlreadyHitHazard) return;
+
+        playerAlreadyHitHazard = true;
         foreach (var player in players)
         {
             player.rigidbody2D.velocity = Vector2.zero;
+            player.rigidbody2D.gravityScale = 0.0f;
             player.GetComponent<PlayerControlManager>().enabled = false;
         }
 

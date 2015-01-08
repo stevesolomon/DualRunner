@@ -1675,7 +1675,7 @@ MonoBehaviour:
   currRoom: -1
   roomLength: 16
   roomYPosition: -7
-  initialXPosition: 0
+  initialXPosition: -16
   basicBlockPrefabs:
   - {fileID: 167592, guid: 5f94ed0b19a3c90418f43fce9df20773, type: 2}
   - {fileID: 175746, guid: 3287515eba259d944b00fd7fe4cef327, type: 2}
