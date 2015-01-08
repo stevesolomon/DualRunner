@@ -2073,6 +2073,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: a8cf4b8eaf656fa49814dcd13a53fadb, type: 3}
   - {fileID: 4900000, guid: 0d3755e622fb36345913c07850cb2f0e, type: 3}
   - {fileID: 4900000, guid: 7f072417e246d564da5213dcfb600cd5, type: 3}
+  - {fileID: 4900000, guid: e29d2774e26a9b04d81e893e3640774d, type: 3}
+  - {fileID: 4900000, guid: 495e0a3544670134fbd50241db0ebf0c, type: 3}
   pixelsPerUnit: 32
   gameManagement: {fileID: 173605323}
 --- !u!4 &1041137581
