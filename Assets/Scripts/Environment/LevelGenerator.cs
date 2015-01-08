@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class LevelGenerator : MonoBehaviour {
 	
 	public RoomManager roomManager;
 
-    public int currentDifficulty = 1;
+    public int currentDifficulty = 5;
+
+    public int difficultyFactor = 5;
+
+    private int difficultyQuota;
 
     public int currRoom = -1;
 
@@ -18,6 +23,8 @@ public class LevelGenerator : MonoBehaviour {
 
     private int nextBlockPositionX;
     private int nextBlockPositionY;
+
+    private bool nextRoomDifficultyZero = false;
 
     public GameObject[] basicBlockPrefabs;
 
@@ -32,13 +39,59 @@ public class LevelGenerator : MonoBehaviour {
         {
             roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
         }
+
+        difficultyQuota = currentDifficulty;
     }
 	
-	public void GenerateNextRoom() {        
-        var roomRef = roomManager.GetRandomRoom();
+	public void GenerateNextRoom() {
+
+        var selectedDifficulty = GetNextDifficulty();
+        var roomRef = roomManager.GetRoomWithDifficulty(selectedDifficulty);
+        var actualRoomDifficulty = roomRef.GetComponent<RoomInfo>().difficulty;
+
+        UpdateDifficultyQuota(actualRoomDifficulty);
 
         InstantiateNewRoom(roomRef, true);			
 	}
+
+    private void UpdateDifficultyQuota(int lastRoomDifficulty)
+    {
+        difficultyQuota -= lastRoomDifficulty;
+
+        if (difficultyQuota <= 0)
+        {
+            currentDifficulty += difficultyFactor;
+            difficultyQuota = currentDifficulty;
+            nextRoomDifficultyZero = true;
+        }
+    }
+
+    private int GetNextDifficulty()
+    {
+        //When we generate the next room we have to take into account our current difficulty, and the remaining quota that we have.
+        //Ideally, we want to generate a room no higher than the remaining difficulty quota, but we'll introduce a bit of randomness
+        //there to keep things interesting! If the quota is less than or equal to zero, then we'll:
+        // (a) Insert a difficulty 0 room
+        // (b) Increase the difficulty by the difficulty factor.
+        // (c) Reset the quota.
+        if (nextRoomDifficultyZero) 
+        {
+            nextRoomDifficultyZero = false;
+            return 0;
+        }
+
+        var difficultyMin = currentDifficulty / difficultyFactor;
+        if (difficultyMin == 0) { difficultyMin = 1; }
+
+        var quotaRange = UnityEngine.Random.Range(difficultyQuota - (difficultyFactor / 2), difficultyQuota + (difficultyFactor / 2));
+        var difficultyMax = Math.Max(quotaRange, difficultyMin);
+
+        var selectedDifficulty = UnityEngine.Random.Range(difficultyMin, difficultyMax);
+
+        Debug.Log("Selected Difficulty is: " + selectedDifficulty);
+
+        return selectedDifficulty;
+    }
 
     public void GenerateStartingRooms()
     {
@@ -61,7 +114,7 @@ public class LevelGenerator : MonoBehaviour {
     private void InstantiateNewRoom(GameObject roomReference, bool usePaddingBlocks)
     {
         //Pick a random number of extra ground blocks to add as random spacing
-        var randomSpacingIndex = Mathf.FloorToInt(Random.Range(0.0f, basicBlockPrefabs.Length + 1));
+        var randomSpacingIndex = Mathf.FloorToInt(UnityEngine.Random.Range(0.0f, basicBlockPrefabs.Length + 1));
 
         var roomStartingPos = GetNextRoomPosition();
         var roomPaddedPos = roomStartingPos;

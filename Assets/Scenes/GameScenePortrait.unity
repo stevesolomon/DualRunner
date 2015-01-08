@@ -1670,7 +1670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomManager: {fileID: 1041137580}
-  currentDifficulty: 1
+  currentDifficulty: 5
+  difficultyFactor: 5
   currRoom: -1
   roomLength: 16
   roomYPosition: -7
@@ -2543,7 +2544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomManager: {fileID: 1041137580}
-  currentDifficulty: 1
+  currentDifficulty: 5
+  difficultyFactor: 5
   currRoom: -1
   roomLength: 16
   roomYPosition: 1

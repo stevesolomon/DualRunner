@@ -46,11 +46,37 @@ public class RoomManager : MonoBehaviour {
 	}
 
 	public GameObject GetRoomWithDifficulty(int difficulty) {
-		if (difficultyMap.ContainsKey(difficulty)) {
-			int pieceIndex = Mathf.FloorToInt(Random.Range (0, difficultyMap[difficulty].Count));
-			return difficultyMap[difficulty][pieceIndex];
-		}
 
-		return null;
+        if (!difficultyMap.ContainsKey(difficulty))
+        {            
+            difficulty = GetNextClosestDifficulty(difficulty);
+        }
+
+		int pieceIndex = Mathf.FloorToInt(Random.Range (0, difficultyMap[difficulty].Count));
+		return difficultyMap[difficulty][pieceIndex];
 	}
+
+    private int GetNextClosestDifficulty(int difficulty)
+    {
+        int closestSoFar = int.MaxValue;
+        int closestDifficulty = Difficulties[0];
+
+        //If we don't have this difficulty as a key, then just choose the next closest from our list of difficulties.
+        //Yeah, we're scanning through a list every time right now but the list of difficulties will always be short.
+        // TODO: Make something better than this :)
+        foreach (var currDifficulty in Difficulties)
+        {
+            //Ignore difficulty 0 in our calculations.
+            if (currDifficulty == 0) continue;
+
+            var difference = Mathf.Abs(difficulty - currDifficulty);
+
+            if (difference < closestSoFar) {
+                closestSoFar = difference;
+                closestDifficulty = currDifficulty;
+            }
+        }
+
+        return closestDifficulty;
+    }
 }
