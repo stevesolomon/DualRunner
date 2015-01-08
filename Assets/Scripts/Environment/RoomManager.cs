@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Text;
 
 public class RoomManager : MonoBehaviour {
 	
@@ -35,6 +36,8 @@ public class RoomManager : MonoBehaviour {
         }
 
         Difficulties.Sort(); //Sort the difficulties for ordered indexing later.
+
+        Debug.Log(this.ToString());
 	}
     
 	public GameObject GetRandomRoom() {
@@ -78,5 +81,19 @@ public class RoomManager : MonoBehaviour {
         }
 
         return closestDifficulty;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var difficulty in Difficulties)
+        {
+            var rooms = difficultyMap[difficulty];
+
+            sb.AppendLine(string.Format("Number of rooms with difficulty {0}: {1}", difficulty, rooms.Count));
+        }
+
+        return sb.ToString();
     }
 }
