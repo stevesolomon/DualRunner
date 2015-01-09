@@ -5,34 +5,45 @@ using System.Globalization;
 
 public class ScoreKeeper : MonoBehaviour, IPauseable {
 
-	public Text ScoreText;
+    public delegate void ScoreChangedDelegate(int newScore, float timeMultiplier);
 
-	private int score = 0;
+    public event ScoreChangedDelegate OnScoreChanged;
 
-    public int timeMultiplier = 1000;
+    private int score;
+    public int Score
+    {
+        get { return score; }
+        private set
+        {
+            score = value;
+
+            if (OnScoreChanged != null)
+            {
+                OnScoreChanged(score, timeMultiplier);
+            }
+        }
+    }
+
+    public float timeMultiplier = 1000f;
 
     public bool Paused { get; protected set; }
 
     void Start()
     {
+        Score = 0;
         Play();
     }
 	
-	// Update is called once per frame
 	void Update () {
 
         if (Paused) { return; }
 
-		score += (int) (Time.deltaTime * timeMultiplier);
-
-        SetScoreText();
+        UpdateScore();
 	}
 
-    private void SetScoreText()
+    private void UpdateScore()
     {
-        float normScore = score / (float) timeMultiplier;
-
-        ScoreText.text = normScore.ToString("0.000", CultureInfo.InvariantCulture) + "\"";
+        Score += (int)(Time.deltaTime * timeMultiplier);
     }
 
     public void Pause()
