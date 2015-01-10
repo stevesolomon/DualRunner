@@ -9,6 +9,8 @@ public class ScoreDisplay : MonoBehaviour
 
     public ScoreKeeper scoreKeeper;
 
+    public ParticleSystem scoreAchievedParticleSystem;
+
     public Color flashColor = Color.yellow;
 
     private float lastScore;
@@ -28,6 +30,11 @@ public class ScoreDisplay : MonoBehaviour
         }
 
         scoreKeeper.OnScoreChanged += ScoreChanged;
+
+        if (scoreAchievedParticleSystem == null)
+        {
+            scoreAchievedParticleSystem = GameObject.Find("ScoreAchievedParticleSystem").GetComponent<ParticleSystem>();
+        }
 	}
 
     public void ScoreChanged(int newScore, float timeMultiplier)
@@ -57,6 +64,8 @@ public class ScoreDisplay : MonoBehaviour
             scoreText.fontSize += 1;
             yield return new WaitForSeconds(0.03f);
         }
+
+
 
         for (int i = 0; i < 10; i++)
         {
