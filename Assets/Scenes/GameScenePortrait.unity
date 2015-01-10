@@ -268,7 +268,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -428,7 +428,7 @@ ParticleSystem:
         rgba: 4280811488
       minMaxState: 2
     startSize:
-      scalar: .25
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -499,8 +499,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 2
-    radius: 1
+    type: 0
+    radius: .74000001
     angle: 25
     length: 5
     boxX: 1
@@ -1284,8 +1284,8 @@ ParticleSystem:
     plane3: {fileID: 0}
     plane4: {fileID: 0}
     plane5: {fileID: 0}
-    dampen: 0
-    bounce: 1
+    dampen: .25
+    bounce: .5
     energyLossOnCollision: 0
     minKillSpeed: 0
     particleRadius: .00999999978
@@ -1692,9 +1692,9 @@ MonoBehaviour:
   roomYPosition: -7
   initialXPosition: -16
   basicBlockPrefabs:
-  - {fileID: 167592, guid: 5f94ed0b19a3c90418f43fce9df20773, type: 2}
-  - {fileID: 175746, guid: 3287515eba259d944b00fd7fe4cef327, type: 2}
-  - {fileID: 153102, guid: 96817e6a65fb39c438cfb42298051fd5, type: 2}
+  - {fileID: 105508, guid: 5f94ed0b19a3c90418f43fce9df20773, type: 2}
+  - {fileID: 149304, guid: 3287515eba259d944b00fd7fe4cef327, type: 2}
+  - {fileID: 113500, guid: 96817e6a65fb39c438cfb42298051fd5, type: 2}
 --- !u!4 &606722854
 Transform:
   m_ObjectHideFlags: 0
@@ -4749,6 +4749,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
+      propertyPath: ShapeModule.radius
+      value: .74000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
+      propertyPath: CollisionModule.bounce
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
+      propertyPath: CollisionModule.dampen
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb69206c1e723464fb9e3b05642de3f6, type: 2}
   m_RootGameObject: {fileID: 63692675}
@@ -4801,9 +4825,9 @@ MonoBehaviour:
   roomYPosition: 1
   initialXPosition: -16
   basicBlockPrefabs:
-  - {fileID: 167592, guid: 5f94ed0b19a3c90418f43fce9df20773, type: 2}
-  - {fileID: 175746, guid: 3287515eba259d944b00fd7fe4cef327, type: 2}
-  - {fileID: 153102, guid: 96817e6a65fb39c438cfb42298051fd5, type: 2}
+  - {fileID: 105508, guid: 5f94ed0b19a3c90418f43fce9df20773, type: 2}
+  - {fileID: 149304, guid: 3287515eba259d944b00fd7fe4cef327, type: 2}
+  - {fileID: 113500, guid: 96817e6a65fb39c438cfb42298051fd5, type: 2}
 --- !u!1001 &1754190052
 Prefab:
   m_ObjectHideFlags: 0
