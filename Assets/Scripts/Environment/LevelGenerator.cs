@@ -13,6 +13,8 @@ public class LevelGenerator : MonoBehaviour {
 
     private int difficultyQuota;
 
+    public int difficultyQuotaFactor = 2;
+
     public int currRoom = -1;
 
     public int roomLength = 12;
@@ -23,6 +25,8 @@ public class LevelGenerator : MonoBehaviour {
 
     private int nextBlockPositionX;
     private int nextBlockPositionY;
+
+    private int lastRoomDifficulty = 0;
 
     private bool nextRoomDifficultyZero = false;
 
@@ -40,29 +44,31 @@ public class LevelGenerator : MonoBehaviour {
             roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
         }
 
-        difficultyQuota = currentDifficulty;
+        difficultyQuota = currentDifficulty * difficultyQuotaFactor;
     }
 	
 	public void GenerateNextRoom() {
 
         var selectedDifficulty = GetNextDifficulty();
         var roomRef = roomManager.GetRoomWithDifficulty(selectedDifficulty);
-        var actualRoomDifficulty = roomRef.GetComponent<RoomInfo>().difficulty;
+        lastRoomDifficulty = roomRef.GetComponent<RoomInfo>().difficulty;
 
-        UpdateDifficultyQuota(actualRoomDifficulty);
+        UpdateDifficulty(lastRoomDifficulty);
 
         InstantiateNewRoom(roomRef, true);			
 	}
 
-    private void UpdateDifficultyQuota(int lastRoomDifficulty)
+    private void UpdateDifficulty(int lastRoomDifficulty)
     {
         difficultyQuota -= lastRoomDifficulty;
 
         if (difficultyQuota <= 0)
-        {
+        {            
             currentDifficulty += difficultyFactor;
-            difficultyQuota = currentDifficulty;
+            difficultyQuota = currentDifficulty * difficultyQuotaFactor;
             nextRoomDifficultyZero = true;
+
+            Debug.Log("Updating difficulty to: " + currentDifficulty);
         }
     }
 
@@ -83,7 +89,16 @@ public class LevelGenerator : MonoBehaviour {
         var difficultyMin = currentDifficulty / difficultyFactor;
         if (difficultyMin == 0) { difficultyMin = 1; }
 
-        var quotaRange = UnityEngine.Random.Range(difficultyQuota - (difficultyFactor / 2), difficultyQuota + (difficultyFactor / 2));
+        int quotaRange;
+
+        if (lastRoomDifficulty < currentDifficulty / 2)
+        {
+            quotaRange = UnityEngine.Random.Range(1, currentDifficulty / 2) + UnityEngine.Random.Range(0, currentDifficulty / 2);
+        }
+        else
+        {
+            quotaRange = UnityEngine.Random.Range(1, Math.Min(2, currentDifficulty / 4)) + UnityEngine.Random.Range(0, currentDifficulty / 4); 
+        }
         var difficultyMax = Math.Max(quotaRange, difficultyMin);
 
         var selectedDifficulty = UnityEngine.Random.Range(difficultyMin, difficultyMax);
