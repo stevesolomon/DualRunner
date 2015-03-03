@@ -37,8 +37,8 @@ public class GameManagement : MonoBehaviour {
         playerAlreadyHitHazard = true;
         foreach (var player in players)
         {
-            player.rigidbody2D.velocity = Vector2.zero;
-            player.rigidbody2D.gravityScale = 0.0f;
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            player.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
             player.GetComponent<PlayerControlManager>().enabled = false;
         }
 
@@ -47,13 +47,19 @@ public class GameManagement : MonoBehaviour {
 
     private IEnumerator OnPlayerHitHazard(GameObject playerThatHit) 
     {
-        playerThatHit.renderer.enabled = false;
+        playerThatHit.GetComponent<Renderer>().enabled = false;
         deathParticles.transform.position = playerThatHit.transform.position;
         deathParticles.Play();
 
         scoreKeeper.Pause();
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
+
+        GameObject.Find("RestartPanel").GetComponent<Animator>().SetBool("GameOverTrigger", true);
+    }
+
+    public void RestartLevel()
+    {
         Application.LoadLevel(Application.loadedLevel);
     }
 }

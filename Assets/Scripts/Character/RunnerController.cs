@@ -47,7 +47,7 @@ public class RunnerController : MonoBehaviour
     {
         var canJump = false; 
 
-        rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         if (grounded) 
         {
@@ -61,7 +61,7 @@ public class RunnerController : MonoBehaviour
         if (canJump && jumpPressed) 
         {
             grounded = false;
-            rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
             timeSinceLastJump = 0f;
             timeExtendingJump = 0f;
             canExtendJump = true;
@@ -79,11 +79,11 @@ public class RunnerController : MonoBehaviour
         // (4) We have not been extending the jump for too long
         // (5) We are not moving downwards (more of a sanity check than anything)
         if (jumping && jumpExtending && canExtendJump && 
-            timeExtendingJump < maxJumpExtendTime && rigidbody2D.velocity.y > 0f) 
+            timeExtendingJump < maxJumpExtendTime && GetComponent<Rigidbody2D>().velocity.y > 0f) 
         {
             timeExtendingJump += Time.deltaTime;
             var normalizedJumpForce = addedJumpForce * Mathf.Lerp(1, 0, timeExtendingJump / maxJumpExtendTime);
-            rigidbody2D.AddForce(new Vector2(0f, normalizedJumpForce));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, normalizedJumpForce));
         }
         else  //We're not extending the jump, so block it from happening for the rest of this jump.
         {
