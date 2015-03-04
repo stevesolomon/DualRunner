@@ -68,6 +68,8 @@ public class RunnerController : MonoBehaviour
             jumping = true;
             timeUntilGroundTest = 0.1f;
 
+            GameObject.Find("SoundEffectManager").GetComponent<SoundEffectManager>().PlayJumpEffect();
+
             return; //We're done here
         }
         
