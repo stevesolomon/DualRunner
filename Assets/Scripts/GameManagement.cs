@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void PlayerDeathDelegate(GameObject player);
+
 public class GameManagement : MonoBehaviour {
 
     private GameObject[] players;
@@ -10,6 +12,8 @@ public class GameManagement : MonoBehaviour {
     public ParticleSystem deathParticles;
 
     public ScoreKeeper scoreKeeper;
+
+    public event PlayerDeathDelegate OnPlayerDeath;
 
     private bool playerAlreadyHitHazard;
 
@@ -43,6 +47,11 @@ public class GameManagement : MonoBehaviour {
         }
 
         StartCoroutine(OnPlayerHitHazard(playerThatHit));
+
+        if (OnPlayerDeath != null)
+        {
+            OnPlayerDeath(playerThatHit);
+        }
     }
 
     private IEnumerator OnPlayerHitHazard(GameObject playerThatHit) 
@@ -54,8 +63,6 @@ public class GameManagement : MonoBehaviour {
         scoreKeeper.Pause();
 
         yield return new WaitForSeconds(1.5f);
-
-        GameObject.Find("RestartPanel").GetComponent<Animator>().SetBool("GameOverTrigger", true);
     }
 
     public void RestartLevel()
