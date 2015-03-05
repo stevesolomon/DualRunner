@@ -21,10 +21,17 @@ public class RunnerController : MonoBehaviour
 
     private float timeUntilGroundTest = 0.0f;
 
+    private MessageBus messageBus;
+
     private void Awake()
     {
         groundCheck = transform.Find("GroundCheck");
         timeSinceLastJump = minTimeBetweenJumps + 1f;
+    }
+
+    private void Start()
+    {
+        messageBus = MessageBus.Instance;
     }
 
     private void FixedUpdate()
@@ -68,7 +75,7 @@ public class RunnerController : MonoBehaviour
             jumping = true;
             timeUntilGroundTest = 0.1f;
 
-            GameObject.Find("SoundEffectManager").GetComponent<SoundEffectManager>().PlayJumpEffect();
+            messageBus.SendMessage(new PlayerJumpedMessage());
 
             return; //We're done here
         }
