@@ -1,23 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RestartPanelHandler : MonoBehaviour {
-
-    public GameManagement gameManager;
-
+public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage> {
+    
     public string gameOverAnimatorPropName = "GameOverTrigger";
 
 	// Use this for initialization
 	void Start () {
-        if (gameManager == null)
-        {
-            gameManager = GameObject.Find("GameManager").GetComponent<GameManagement>();
-        }
-
-        gameManager.OnPlayerDeath += OnPlayerDeath;
+        MessageBus.Instance.Subscribe<PlayerDeathMessage>(this);
 	}
 
-    void OnPlayerDeath(GameObject player)
+    public void HandleMessage(PlayerDeathMessage message)
     {
         this.GetComponent<Animator>().SetBool(gameOverAnimatorPropName, true);
     }

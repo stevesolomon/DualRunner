@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Globalization;
 
-public class ScoreKeeper : MonoBehaviour, IPauseable {
+public class ScoreKeeper : MonoBehaviour, IListener<PlayerDeathMessage> {
 
     public delegate void ScoreChangedDelegate(int newScore, float timeMultiplier);
 
@@ -31,7 +31,9 @@ public class ScoreKeeper : MonoBehaviour, IPauseable {
     void Start()
     {
         Score = 0;
-        Play();
+        Paused = false;
+
+        MessageBus.Instance.Subscribe<PlayerDeathMessage>(this);
     }
 	
 	void Update () {
@@ -46,13 +48,8 @@ public class ScoreKeeper : MonoBehaviour, IPauseable {
         Score += (int)(Time.deltaTime * timeMultiplier);
     }
 
-    public void Pause()
+    public void HandleMessage(PlayerDeathMessage message)
     {
-        Paused = true;
-    }
-
-    public void Play()
-    {
-        Paused = false;
+        Paused = !Paused;
     }
 }

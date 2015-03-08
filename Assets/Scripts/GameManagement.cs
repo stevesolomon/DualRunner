@@ -11,8 +11,6 @@ public class GameManagement : MonoBehaviour {
 
     public ParticleSystem deathParticles;
 
-    public ScoreKeeper scoreKeeper;
-
     public event PlayerDeathDelegate OnPlayerDeath;
 
     private bool playerAlreadyHitHazard;
@@ -24,11 +22,6 @@ public class GameManagement : MonoBehaviour {
         if (deathParticles == null) 
         {
             deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
-        }
-
-        if (scoreKeeper == null)
-        {
-            scoreKeeper = GameObject.Find("ScoreKeeper").GetComponent<ScoreKeeper>();
         }
 
         playerAlreadyHitHazard = false;
@@ -60,7 +53,7 @@ public class GameManagement : MonoBehaviour {
         deathParticles.transform.position = playerThatHit.transform.position;
         deathParticles.Play();
 
-        scoreKeeper.Pause();
+        MessageBus.Instance.SendMessage(new PlayerDeathMessage() { Player = playerThatHit });
 
         yield return new WaitForSeconds(1.5f);
     }
