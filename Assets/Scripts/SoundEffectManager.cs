@@ -12,11 +12,6 @@ public class SoundEffectManager : MonoBehaviour, IListener<PlayerJumpedMessage> 
         MessageBus.Instance.Subscribe<PlayerJumpedMessage>(this);
     }
 
-    void OnDestroy()
-    {
-       // MessageBus.Instance.Unsubscribe<PlayerJumpedMessage>(PlayJumpEffect);
-    }
-
     public void HandleMessage(PlayerJumpedMessage message)
     {
         this.GetComponent<AudioSource>().PlayOneShot(jumpSoundEffect);
