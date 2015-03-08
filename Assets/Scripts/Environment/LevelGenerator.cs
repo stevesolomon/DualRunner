@@ -110,12 +110,8 @@ public class LevelGenerator : MonoBehaviour {
     {
         var roomRef = roomManager.GetRoomWithDifficulty(0);
 
-        var numInitial = UnityEngine.Random.Range(1, 3);
-
-        for (int i = 0; i < numInitial; i++)
-        {
-            InstantiateNewRoom(roomRef, false);
-        }
+        InstantiateNewRoom(roomRef, false);
+        InstantiateNewRoom(roomRef, false);
     }
 
     private Vector3 GetNextRoomPosition()
