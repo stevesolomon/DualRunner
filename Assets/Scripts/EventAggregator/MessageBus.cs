@@ -5,7 +5,7 @@ using System.Text;
 
 public class MessageBus : IMessageBus 
 {
-    private Dictionary<Type, List<Action<IMessage>>> subscribers;
+    private readonly List<WeakMessageHandler> handlers;
 
     private static MessageBus instance;
 
@@ -24,36 +24,50 @@ public class MessageBus : IMessageBus
 
     private MessageBus()
     {
-        subscribers = new Dictionary<Type, List<Action<IMessage>>>();
+        handlers = new List<WeakMessageHandler>();
     }
 
-    public void Subscribe<T>(Action<IMessage> action) where T : IMessage
+    public void Subscribe<T>(IListener<T> listener) where T : IMessage
     {
-        if (!subscribers.ContainsKey(typeof(T)))
-        {
-            subscribers.Add(typeof(T), new List<Action<IMessage>>());
-        }
-
-        subscribers[typeof(T)].Add(action);
-    }
-
-    public void Unsubscribe<T>(Action<IMessage> action) where T : IMessage
-    {
-        if (!subscribers.ContainsKey(typeof(T)))
+        if (listener == null)
         {
             return;
         }
 
-        subscribers[typeof(T)].Remove(action);
+        lock (handlers)
+        {
+            if (!handlers.Any(h => h.Matches(listener)))
+            {
+                handlers.Add(new WeakMessageHandler(listener));
+            } 
+        }
     }
 
     public void SendMessage<T>(T message) where T : IMessage
     {
-        if (!subscribers.ContainsKey(typeof(T)))
+        if (message == null)
         {
             return;
         }
 
-        subscribers[typeof(T)].ForEach(a => a.Invoke(message));
+        WeakMessageHandler[] toNotify;
+
+        lock (handlers)
+        {
+            toNotify = handlers.ToArray();
+        }
+
+        var messageType = typeof(T);
+
+        var deadHandlers = handlers.Where(h => !h.HandleMessage(messageType, message)).ToList();
+
+        if (deadHandlers.Any())
+        {
+            foreach (var deadHandler in deadHandlers)
+            {
+                handlers.Remove(deadHandler);
+            }
+        } 
     }
+
 }
