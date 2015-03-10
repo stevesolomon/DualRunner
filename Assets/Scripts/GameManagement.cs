@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public delegate void PlayerDeathDelegate(GameObject player);
-
 public class GameManagement : MonoBehaviour {
 
     private GameObject[] players;
@@ -10,9 +8,7 @@ public class GameManagement : MonoBehaviour {
     public string playerGameObjectTag = "Player";
 
     public ParticleSystem deathParticles;
-
-    public event PlayerDeathDelegate OnPlayerDeath;
-
+    
     private bool playerAlreadyHitHazard;
 
 	// Use this for initialization
@@ -39,23 +35,11 @@ public class GameManagement : MonoBehaviour {
             player.GetComponent<PlayerControlManager>().enabled = false;
         }
 
-        StartCoroutine(OnPlayerHitHazard(playerThatHit));
-
-        if (OnPlayerDeath != null)
-        {
-            OnPlayerDeath(playerThatHit);
-        }
-    }
-
-    private IEnumerator OnPlayerHitHazard(GameObject playerThatHit) 
-    {
         playerThatHit.GetComponent<Renderer>().enabled = false;
         deathParticles.transform.position = playerThatHit.transform.position;
         deathParticles.Play();
 
         MessageBus.Instance.SendMessage(new PlayerDeathMessage() { Player = playerThatHit });
-
-        yield return new WaitForSeconds(1.5f);
     }
 
     public void RestartLevel()
