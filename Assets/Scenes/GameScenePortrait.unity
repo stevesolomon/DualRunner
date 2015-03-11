@@ -248,7 +248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGameObjectTag: Player
   deathParticles: {fileID: 63692678}
-  scoreKeeper: {fileID: 0}
 --- !u!1001 &309794695
 Prefab:
   m_ObjectHideFlags: 0
@@ -855,7 +854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57ed02d82ebe6d49ae02070b1da01b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 173605323}
   gameOverAnimatorPropName: GameOverTrigger
 --- !u!1 &644551147
 GameObject:
@@ -865,6 +863,23 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ef50a87a2b40bd043a9f5d4d2eb7b55f, type: 2}
   m_PrefabInternal: {fileID: 781970724}
+--- !u!95 &644551155
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 644551147}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71e12be2119494c4ab49dd09ad2ad574, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &756901341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1345,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1182002674}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1283291351
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: ef50a87a2b40bd043a9f5d4d2eb7b55f, type: 2}
+  m_PrefabInternal: {fileID: 771057212}
+--- !u!95 &1283291352
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283291351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71e12be2119494c4ab49dd09ad2ad574, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1286138794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,33 +1439,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1 &1342754811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1342754812}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1342754812
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1342754811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 304.279388, y: 435.441772, z: -.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
 --- !u!1 &1346477041
 GameObject:
   m_ObjectHideFlags: 0

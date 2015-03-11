@@ -8,8 +8,8 @@ public class RunnerController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround; //A mask determining what is ground to the runner
 
     private Transform groundCheck; 
-    public float groundedHeightTest = 0.08f; 
-    private bool grounded = false; 
+    public float groundedHeightTest = 0.08f;    
+
     private bool jumping = false;
 
     public float minTimeBetweenJumps;
@@ -22,10 +22,18 @@ public class RunnerController : MonoBehaviour
     private float timeUntilGroundTest = 0.0f;
 
     private MessageBus messageBus;
+    private Animator animator;
+
+    public bool IsGrounded
+    {
+        get;
+        protected set;
+    } 
 
     private void Awake()
     {
         groundCheck = transform.Find("GroundCheck");
+        animator = GetComponent<Animator>();
         timeSinceLastJump = minTimeBetweenJumps + 1f;
     }
 
@@ -36,15 +44,17 @@ public class RunnerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        grounded = false;
+        IsGrounded = false;
         timeUntilGroundTest -= Time.deltaTime;
 
         if (timeUntilGroundTest <= 0f)
         {
-            grounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 0.5f, groundCheck.position.y),
+            IsGrounded = Physics2D.OverlapArea(new Vector2(groundCheck.position.x - 0.5f, groundCheck.position.y),
                                              new Vector2(groundCheck.position.x + 0.5f, groundCheck.position.y - groundedHeightTest),
                                              whatIsGround);
         }
+
+        animator.SetBool("isGrounded", IsGrounded);
         
         timeSinceLastJump += Time.deltaTime;
     }
@@ -56,7 +66,7 @@ public class RunnerController : MonoBehaviour
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
-        if (grounded) 
+        if (IsGrounded) 
         {
             jumping = false;
 
@@ -67,7 +77,7 @@ public class RunnerController : MonoBehaviour
         //First check if we are able to jump or not.
         if (canJump && jumpPressed) 
         {
-            grounded = false;
+            IsGrounded = false;
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
             timeSinceLastJump = 0f;
             timeExtendingJump = 0f;
