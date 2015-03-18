@@ -52,6 +52,7 @@ public class RoomLoader {
 
 		var roomInfo = room.GetComponent<RoomInfo>();
 		roomInfo.difficulty = difficulty;
+        roomInfo.width = width;
 
 		//Build up our prefabs one-by-one in the roomNode.
 		foreach (XmlNode node in roomTiles) {

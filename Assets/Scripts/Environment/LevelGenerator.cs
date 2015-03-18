@@ -17,8 +17,6 @@ public class LevelGenerator : MonoBehaviour {
 
     public int currRoom = -1;
 
-    public int roomLength = 12;
-
     public int roomYPosition = -7;
 
     public int initialXPosition = 0;
@@ -110,16 +108,19 @@ public class LevelGenerator : MonoBehaviour {
     {
         var roomRef = roomManager.GetRoomWithDifficulty(0);
 
-        InstantiateNewRoom(roomRef, false);
-        InstantiateNewRoom(roomRef, false);
+        while (nextBlockPositionX < 16f)
+        {
+            InstantiateNewRoom(roomRef, false);
+        }
+
     }
 
-    private Vector3 GetNextRoomPosition()
+    private Vector3 GetNextRoomPosition(RoomInfo roomInfo)
     {
         int xPosition = nextBlockPositionX;
         int yPosition = nextBlockPositionY;
 
-        nextBlockPositionX += roomLength;
+        nextBlockPositionX += roomInfo.width;
         
         return new Vector3((float) xPosition, (float) yPosition, 0f);
     }
@@ -128,8 +129,9 @@ public class LevelGenerator : MonoBehaviour {
     {
         //Pick a random number of extra ground blocks to add as random spacing
         var randomSpacingIndex = Mathf.FloorToInt(UnityEngine.Random.Range(0.0f, basicBlockPrefabs.Length + 1));
+        var roomInfo = roomReference.GetComponent<RoomInfo>();
 
-        var roomStartingPos = GetNextRoomPosition();
+        var roomStartingPos = GetNextRoomPosition(roomInfo);
         var roomPaddedPos = roomStartingPos;
 
         if (usePaddingBlocks && randomSpacingIndex != basicBlockPrefabs.Length)
