@@ -23,6 +23,7 @@ public class RunnerController : MonoBehaviour
 
     private MessageBus messageBus;
     private Animator animator;
+    private Rigidbody2D rigidbody;
 
     public bool IsGrounded
     {
@@ -34,6 +35,7 @@ public class RunnerController : MonoBehaviour
     {
         groundCheck = transform.Find("GroundCheck");
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody2D>();
         timeSinceLastJump = minTimeBetweenJumps + 1f;
     }
 
@@ -55,6 +57,7 @@ public class RunnerController : MonoBehaviour
         }
 
         animator.SetBool("isGrounded", IsGrounded);
+        animator.SetFloat("yVelocity", rigidbody.velocity.y);
         
         timeSinceLastJump += Time.deltaTime;
     }
