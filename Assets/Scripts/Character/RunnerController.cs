@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RunnerController : MonoBehaviour
+public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
 {
     [SerializeField] private float maxSpeed = 10f; 
     [SerializeField] private float jumpForce = 400f; 
@@ -42,6 +42,7 @@ public class RunnerController : MonoBehaviour
     private void Start()
     {
         messageBus = MessageBus.Instance;
+        messageBus.Subscribe<PlayerDeathMessage>(this); 
     }
 
     private void FixedUpdate()
@@ -111,5 +112,10 @@ public class RunnerController : MonoBehaviour
         {
             canExtendJump = false;
         }
+    }
+
+    public void HandleMessage(PlayerDeathMessage message)
+    {
+        animator.SetBool("isGameOver", true);
     }
 }
