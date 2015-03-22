@@ -23,7 +23,7 @@ public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
 
     private MessageBus messageBus;
     private Animator animator;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D myRigidBody2D;
 
     public bool IsGrounded
     {
@@ -35,7 +35,7 @@ public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
     {
         groundCheck = transform.Find("GroundCheck");
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        myRigidBody2D = GetComponent<Rigidbody2D>();
         timeSinceLastJump = minTimeBetweenJumps + 1f;
     }
 
@@ -58,7 +58,7 @@ public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
         }
 
         animator.SetBool("isGrounded", IsGrounded);
-        animator.SetFloat("yVelocity", rigidbody.velocity.y);
+        animator.SetFloat("yVelocity", myRigidBody2D.velocity.y);
         
         timeSinceLastJump += Time.deltaTime;
     }

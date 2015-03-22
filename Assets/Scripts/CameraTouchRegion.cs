@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraTouchRegion : MonoBehaviour 
 {
-    public Camera camera;
+    public Camera myCamera;
 
     public Rect TouchRect { get; private set; }
 
@@ -13,9 +13,9 @@ public class CameraTouchRegion : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
-        if (camera == null)
+        if (myCamera == null)
         {
-            camera = Camera.main;
+            myCamera = Camera.main;
         }
 
         var fullRect = new Rect(0, 0, Screen.width, Screen.height);
