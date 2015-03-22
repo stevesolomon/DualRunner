@@ -73,6 +73,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isGameOver
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isGrounded
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110243950}
   m_Solo: 0
@@ -246,7 +249,7 @@ AnimatorStateMachine:
     m_Position: {x: 456, y: -72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110243950}
-    m_Position: {x: 84, y: -252, z: 0}
+    m_Position: {x: 252, y: -336, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110119580}

@@ -30,8 +30,8 @@ public class GameManagement : MonoBehaviour {
         playerAlreadyHitHazard = true;
         foreach (var player in players)
         {
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            player.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, player.GetComponent<Rigidbody2D>().velocity.y);
+            //player.GetComponent<Rigidbody2D>().gravityScale = 0.0f;
             player.GetComponent<PlayerControlManager>().enabled = false;
         }
 
