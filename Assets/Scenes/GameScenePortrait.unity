@@ -1083,7 +1083,15 @@ Prefab:
       objectReference: {fileID: 554228661}
     - target: {fileID: 5851898, guid: 488575f098d944380bb65cb9af2cb45e, type: 2}
       propertyPath: m_Offset.y
-      value: -.560000002
+      value: -.555000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 437762, guid: 488575f098d944380bb65cb9af2cb45e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851898, guid: 488575f098d944380bb65cb9af2cb45e, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 488575f098d944380bb65cb9af2cb45e, type: 2}
