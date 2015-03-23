@@ -79,8 +79,16 @@ public class RoomLoader {
             if (hazardComponent != null)
             {
                 hazardComponent.gameManagement = gameManagement;
-            }
+            }            
 		}
+
+        if (Debug.isDebugBuild)
+        {
+            //Add markers at the start of rooms
+            var debugMarker = GameObject.Instantiate(Resources.Load("Debug/DebugRoomMarker"), new Vector3(0f, 0f, 10f), Quaternion.identity) as GameObject;
+            debugMarker.transform.parent = room.transform;
+            debugMarker.transform.localPosition = new Vector3(0f, 0f, 100f);
+        }
 
 		return room;
 	}
