@@ -252,10 +252,10 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    1: FlatRoom;CROSS_PLATFORM_INPUT
-    2: CROSS_PLATFORM_INPUT
-    4: LevelCreator;MOBILE_INPUT
-    7: BottomCamera
+    1: FlatRoom;CROSS_PLATFORM_INPUT;SOOMLA_TWITTER
+    2: CROSS_PLATFORM_INPUT;SOOMLA_TWITTER
+    4: LevelCreator;MOBILE_INPUT;SOOMLA_TWITTER
+    7: BottomCamera;SOOMLA_TWITTER
     15: CROSS_PLATFORM_INPUT;MOBILE_INPUT
     16: CROSS_PLATFORM_INPUT;MOBILE_INPUT
   metroPackageName: 2013_10 - Sample Assets
