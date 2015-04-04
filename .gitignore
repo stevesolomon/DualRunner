@@ -10,6 +10,7 @@ Assets/Fonts.meta
 Assets/UnityVS
 Assets/UnityVS.meta
 Assets/Sounds
+Assets/Soomla/Resources/SoomlaEditorScript.asset #Soomla script containing API keys and Soomla secret key
 RawAssets
 
 # Mac OS Files
