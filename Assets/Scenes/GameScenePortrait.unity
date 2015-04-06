@@ -141,6 +141,7 @@ GameObject:
   - 114: {fileID: 45909867}
   - 114: {fileID: 45909869}
   - 114: {fileID: 45909870}
+  - 225: {fileID: 45909871}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -244,6 +245,17 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!225 &45909871
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45909865}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!198 &63692678
 ParticleSystem:
   m_PrefabParentObject: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6,
@@ -903,9 +915,9 @@ GameObject:
   - 224: {fileID: 611445272}
   - 222: {fileID: 611445274}
   - 114: {fileID: 611445273}
-  - 225: {fileID: 611445275}
   - 95: {fileID: 611445276}
   - 114: {fileID: 611445277}
+  - 225: {fileID: 611445275}
   m_Layer: 5
   m_Name: RestartPanel
   m_TagString: Untagged
@@ -1702,6 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048acaad3f09ecd4aa98ec91a4cb6856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartCanvas: {fileID: 611445275}
 --- !u!4 &1370631881
 Transform:
   m_ObjectHideFlags: 0
