@@ -610,7 +610,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1370631880}
-        m_MethodName: TweetScore
+        m_MethodName: StartTweetScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
