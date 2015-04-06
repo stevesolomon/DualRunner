@@ -54,12 +54,17 @@ namespace Soomla.Profile
 
 		static private int unreadyProviders = 0;
 
+        static private bool alreadyInitialized = false;
+
 		/// <summary>
 		/// Initializes the SOOMLA Profile Module.
 		/// 
 		/// NOTE: This function must be called before any of the class methods can be used.
 		/// </summary>
 		public static void Initialize() {
+
+            if (alreadyInitialized) { return; }
+
 			instance._initialize(GetCustomParamsJson()); //add parameters
 
 #if SOOMLA_FACEBOOK
@@ -78,6 +83,7 @@ namespace Soomla.Profile
 #if UNITY_EDITOR
 			TryFireProfileInitialized();
 #endif
+            alreadyInitialized = true;
 		}
 
 		/// <summary>
@@ -666,6 +672,8 @@ namespace Soomla.Profile
 			// Read screen contents into the texture
 			tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
 			tex.Apply();
+
+            ProfileEvents.OnScreenshotCaptured(provider, payload);
 
 			UploadImage(provider, message, "current_screenshot.jpeg", tex, payload, reward);
 		}

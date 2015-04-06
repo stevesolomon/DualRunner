@@ -446,6 +446,17 @@ namespace Soomla.Profile {
 			ProfileEvents.OnGetFeedFailed (provider, errorMessage);
 		}
 
+        public void onScreenshotCaptured(Provider provider, String message)
+        {
+            SoomlaUtils.LogDebug(TAG, "SOOMLA/UNITY onScreenshotCaptured");
+
+            JSONObject eventJson = new JSONObject(message);
+
+            String errorMessage = eventJson["message"].str;
+
+            ProfileEvents.OnScreenshotCaptured (provider, errorMessage);
+        }
+
 		public delegate void Action();
 
 		public static Action OnSoomlaProfileInitialized = delegate {};
@@ -501,6 +512,8 @@ namespace Soomla.Profile {
 		public static Action<Provider, string, string> OnInviteFailed = delegate {};
 
 		public static Action<Provider, string> OnInviteCancelled = delegate {};
+
+        public static Action<Provider, string> OnScreenshotCaptured = delegate {};
 
 		public class ProfileEventPusher {
 
