@@ -915,7 +915,6 @@ GameObject:
   - 224: {fileID: 611445272}
   - 222: {fileID: 611445274}
   - 114: {fileID: 611445273}
-  - 95: {fileID: 611445276}
   - 114: {fileID: 611445277}
   - 225: {fileID: 611445275}
   m_Layer: 5
@@ -982,23 +981,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!95 &611445276
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 611445271}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c534e23b155dac649aa56eccff439984, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &611445277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,7 +992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57ed02d82ebe6d49ae02070b1da01b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverAnimatorPropName: GameOverTrigger
+  waitTime: .5
+  appearTime: 1
+  restartCanvasGroup: {fileID: 0}
 --- !u!1 &644551147
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,18 +33,15 @@ public class SocialManager : MonoBehaviour, IListener<TweetScoreMessage> {
 
     public void TweetScore()
     {
-        restartCanvas.alpha = 0f;
         if (!SoomlaProfile.IsLoggedIn(Provider.TWITTER))
         {
             SoomlaProfile.Login(Provider.TWITTER);
         }
         else
         {
-            //SoomlaProfile.UpdateStory(Provider.TWITTER, "I just got a high score in #DualRunner!", "#DualRunner high score", "My high score", "dual_runner_score", "http://twitter.com", null, null);
             oldCanvasAlpha = restartCanvas.alpha;
             restartCanvas.alpha = 0f;
-            SoomlaProfile.UploadCurrentScreenShot(this, Provider.TWITTER, "I just got a high scorein #DualRunner!", "Check out my high score in #DualRunner!");
-            
+            SoomlaProfile.UploadCurrentScreenShot(this, Provider.TWITTER, "I just got a high scorein #DualRunner!", "Check out my high score in #DualRunner!");            
         }
     }
 
