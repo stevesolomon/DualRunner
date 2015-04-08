@@ -178,7 +178,7 @@ namespace Soomla.Profile {
 
 			JSONObject payloadJSON = new JSONObject(eventJson ["payload"].str);
 
-			ProfileEvents.OnLoginFailed(provider, errorMessage, ProfilePayload.GetUserPayload(payloadJSON));
+            ProfileEvents.OnLoginFailed(provider, errorMessage, ProfilePayload.GetUserPayload(payloadJSON));
 		}
 
 		/// <summary>
@@ -446,15 +446,24 @@ namespace Soomla.Profile {
 			ProfileEvents.OnGetFeedFailed (provider, errorMessage);
 		}
 
-        public void onScreenshotCaptured(Provider provider, String message)
+        public void onTakeScreenshotStarted(Provider provider, String message)
+        {
+            SoomlaUtils.LogDebug(TAG, "SOOMLA/UNITY onTakeScreenshotStarted");
+
+            JSONObject eventJson = new JSONObject(message);
+            String errorMessage = eventJson["messge"].str;
+
+            ProfileEvents.OnTakeScreenshotStarted(provider, errorMessage);
+        }
+
+        public void onTakeScreenshotFinished(Provider provider, String message)
         {
             SoomlaUtils.LogDebug(TAG, "SOOMLA/UNITY onScreenshotCaptured");
 
             JSONObject eventJson = new JSONObject(message);
-
             String errorMessage = eventJson["message"].str;
 
-            ProfileEvents.OnScreenshotCaptured (provider, errorMessage);
+            ProfileEvents.OnTakeScreenshotFinished (provider, errorMessage);
         }
 
 		public delegate void Action();
@@ -513,7 +522,9 @@ namespace Soomla.Profile {
 
 		public static Action<Provider, string> OnInviteCancelled = delegate {};
 
-        public static Action<Provider, string> OnScreenshotCaptured = delegate {};
+        public static Action<Provider, string> OnTakeScreenshotStarted = delegate {};
+
+        public static Action<Provider, string> OnTakeScreenshotFinished = delegate {};
 
 		public class ProfileEventPusher {
 

@@ -2,8 +2,9 @@
 using System.Collections;
 using Soomla.Profile;
 using Assets.Scripts.EventAggregator.Messages;
+using Assets.Scripts.EventAggregator.Messages.Social;
 
-public class SocialManager : MonoBehaviour, IListener<TweetScoreMessage> {
+public class SocialManager : MonoBehaviour, IListener<TweetScoreMessage>{
 
     public CanvasGroup restartCanvas;
 
@@ -12,7 +13,8 @@ public class SocialManager : MonoBehaviour, IListener<TweetScoreMessage> {
 	// Use this for initialization
 	void Start () {        
         SoomlaProfile.Initialize();
-        ProfileEvents.OnScreenshotCaptured += OnScreenshotCaptured;
+        ProfileEvents.OnTakeScreenshotStarted += OnTakeScreenshotStarted;
+        ProfileEvents.OnTakeScreenshotFinished += OnTakeScreenshotFinished;
         ProfileEvents.OnLoginFailed += OnLoginFailed;
         ProfileEvents.OnLoginFinished += OnLoginFinished;
         MessageBus.Instance.Subscribe<TweetScoreMessage>(this);
@@ -52,8 +54,6 @@ public class SocialManager : MonoBehaviour, IListener<TweetScoreMessage> {
 
     private void TweetScore()
     {
-        oldCanvasAlpha = restartCanvas.alpha;
-        restartCanvas.alpha = 0f;
         SoomlaProfile.UploadCurrentScreenShot(this, Provider.TWITTER, "I just got a high scorein #DualRunner!", "Check out my high score in #DualRunner!");    
     }
 
@@ -65,13 +65,29 @@ public class SocialManager : MonoBehaviour, IListener<TweetScoreMessage> {
         }
     }
 
-    private void OnLoginFailed(Provider provider, string arg2, string arg3)
+    private void OnLoginFailed(Provider provider, string errorMessage, string payload)
     {
-        //TODO: Add small UI element that says login failed.
-    } 
+        //Error code 89 means we should logout and try again.
+        if (provider == Provider.TWITTER && errorMessage.Contains("89"))
+        {
+            Debug.Log("Failed login, attempting to logout...");
+            SoomlaProfile.Logout(provider);
+            SoomlaProfile.Login(Provider.TWITTER);
+        }
+        else //We had some general login failure, tell the panel.
+        {
+            MessageBus.Instance.SendMessage(new TwitterLoginFailureMessage());
+        }
+    }
 
-    private void OnScreenshotCaptured(Provider arg1, string arg2)
+    private void OnTakeScreenshotStarted(Provider provider, string payload)
+    {
+        oldCanvasAlpha = restartCanvas.alpha;
+        restartCanvas.alpha = 0f;
+    }
+
+    private void OnTakeScreenshotFinished(Provider arg1, string arg2)
     {
         restartCanvas.alpha = oldCanvasAlpha;
-    } 
+    }
 }

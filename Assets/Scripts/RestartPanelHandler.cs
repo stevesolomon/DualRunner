@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.EventAggregator.Messages.Social;
 
-public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage> 
+public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>, IListener<TwitterLoginFailureMessage>
 {
     public float waitTime = 0.5f;
     public float appearTime = 0.75f;
@@ -11,6 +12,7 @@ public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>
 	void Start () 
     {
         MessageBus.Instance.Subscribe<PlayerDeathMessage>(this);
+        MessageBus.Instance.Subscribe<TwitterLoginFailureMessage>(this);
 
         if (restartCanvasGroup == null)
         {
@@ -39,5 +41,10 @@ public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>
         }
 
         yield return null;
+    }
+
+    public void HandleMessage(TwitterLoginFailureMessage message)
+    {
+        
     }
 }

@@ -673,7 +673,7 @@ namespace Soomla.Profile
 			tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
 			tex.Apply();
 
-            ProfileEvents.OnScreenshotCaptured(provider, payload);
+            ProfileEvents.OnTakeScreenshotFinished(provider, payload);
 
 			UploadImage(provider, message, "current_screenshot.jpeg", tex, payload, reward);
 		}
