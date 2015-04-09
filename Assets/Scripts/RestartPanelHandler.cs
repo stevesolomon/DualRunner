@@ -9,6 +9,8 @@ public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>,
 
     public CanvasGroup restartCanvasGroup;
 
+    public Animator twitterLoginFailedAnimator;
+
 	void Start () 
     {
         MessageBus.Instance.Subscribe<PlayerDeathMessage>(this);
@@ -17,6 +19,11 @@ public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>,
         if (restartCanvasGroup == null)
         {
             restartCanvasGroup = this.GetComponent<CanvasGroup>();
+        }
+
+        if (twitterLoginFailedAnimator == null)
+        {
+            twitterLoginFailedAnimator = this.transform.Find("TwitterLoginFailedText").GetComponent<Animator>();
         }
 	}
 
@@ -45,6 +52,6 @@ public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>,
 
     public void HandleMessage(TwitterLoginFailureMessage message)
     {
-        
+        twitterLoginFailedAnimator.SetTrigger("showTwitterLoginError");
     }
 }
