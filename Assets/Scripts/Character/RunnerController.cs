@@ -66,7 +66,7 @@ public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
 
         if (transform.position.x != otherPlayer.transform.position.x)
         {
-            transform.position = new Vector3(otherPlayer.transform.position.x, transform.position.y, transform.position.z);
+         //   transform.position = new Vector3(otherPlayer.transform.position.x, transform.position.y, transform.position.z);
         }
     }
 
