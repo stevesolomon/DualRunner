@@ -21,7 +21,9 @@ public class RoomManager : MonoBehaviour {
 		Difficulties = new List<int>(16);
 		roomLoader = new RoomLoader(pixelsPerUnit);
 
-        foreach (var asset in roomDefinitions)
+        var roomDefs = Resources.LoadAll("RoomDefinitions/");
+
+        foreach (TextAsset asset in roomDefs)
         {
             var room = roomLoader.LoadRoom(asset.text, gameManagement);
             var difficulty = room.GetComponent<RoomInfo>().difficulty;

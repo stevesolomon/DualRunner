@@ -3,7 +3,7 @@
  <properties>
   <property name="difficulty" value="1"/>
  </properties>
- <tileset firstgid="1" source="Tilesets/Main.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/Main.tsx"/>
  <layer name="Tile Layer 1" width="16" height="8">
   <data>
    <tile gid="0"/>

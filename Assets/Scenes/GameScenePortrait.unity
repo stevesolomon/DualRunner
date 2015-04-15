@@ -256,7 +256,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!198 &63692678
+--- !u!198 &63692678 stripped
 ParticleSystem:
   m_PrefabParentObject: {fileID: 19834678, guid: eb69206c1e723464fb9e3b05642de3f6,
     type: 2}
@@ -1661,7 +1661,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba3e663b077e7401a83d69fff7548944, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1336126661
+--- !u!4 &1336126661 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ba3e663b077e7401a83d69fff7548944, type: 2}
   m_PrefabInternal: {fileID: 1336126660}
@@ -2118,7 +2118,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d99d2a7afd4a4856b8b091c814944c3, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1615779105
+--- !u!4 &1615779105 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5d99d2a7afd4a4856b8b091c814944c3, type: 2}
   m_PrefabInternal: {fileID: 1615779104}
