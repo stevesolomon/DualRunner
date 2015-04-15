@@ -25,6 +25,8 @@ public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
     private Animator animator;
     private Rigidbody2D myRigidBody2D;
 
+    public Transform otherPlayer;
+
     public bool IsGrounded
     {
         get;
@@ -61,6 +63,11 @@ public class RunnerController : MonoBehaviour, IListener<PlayerDeathMessage>
         animator.SetFloat("yVelocity", myRigidBody2D.velocity.y);
         
         timeSinceLastJump += Time.deltaTime;
+
+        if (transform.position.x != otherPlayer.transform.position.x)
+        {
+            transform.position = new Vector3(otherPlayer.transform.position.x, transform.position.y, transform.position.z);
+        }
     }
 
 
