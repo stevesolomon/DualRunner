@@ -27,14 +27,14 @@ public class RestartPanelHandler : MonoBehaviour, IListener<PlayerDeathMessage>,
             twitterLoginFailedAnimator = this.transform.Find("TwitterLoginFailedText").GetComponent<Animator>();
         }
 
-        #if (!UNITY_IOS || !UNITY_ANDROID) 
+        #if (!UNITY_IOS && !UNITY_ANDROID) 
         var twitterButton = this.transform.Find("TweetButton").GetComponent<Button>();
         twitterButton.onClick.AddListener(DisabledTweetButtonClick);
         this.transform.Find("TwitterLoginFailedText").GetComponent<Text>().text = "Sorry, Tweeting scores only works in iOS/Android!";
         #endif
 	}
 
-    #if (!UNITY_IOS || !UNITY_ANDROID) 
+    #if (!UNITY_IOS && !UNITY_ANDROID) 
     private void DisabledTweetButtonClick()
     {
         twitterLoginFailedAnimator.SetTrigger("showTwitterLoginError");
