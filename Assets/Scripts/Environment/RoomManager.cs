@@ -4,8 +4,6 @@ using System.Text;
 
 public class RoomManager : MonoBehaviour {
 	
-	public TextAsset[] roomDefinitions;
-
     public int pixelsPerUnit;
 	
 	private Dictionary<int, List<GameObject>> difficultyMap;
